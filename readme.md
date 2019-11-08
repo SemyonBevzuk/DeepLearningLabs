@@ -3,7 +3,7 @@
 нейронных сетей для решения задачи классификации.
 
 ## Данные
-Источник данных: [датасет](https://www.kaggle.com/valentynsichkar/traffic-signs-preprocessed)
+Источник данных: [Traffic Signs Preprocessed](https://www.kaggle.com/valentynsichkar/traffic-signs-preprocessed)
 
 Необходимо распознать на RGB изображении 32 * 32 один из 43 дорожных знаков.
 
