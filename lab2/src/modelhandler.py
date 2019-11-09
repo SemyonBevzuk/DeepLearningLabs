@@ -6,6 +6,8 @@ from keras import optimizers
 import json
 import os
 
+import plthandler as ph
+
 
 def get_model_name(model):
     filename = 'FCNN'
@@ -29,21 +31,21 @@ def fit_model(data, params):
     inp = Input(shape=(x_train.shape[1],))  # Our input is a 1D vector of size 32*32*3
     hidden_layer_prev = inp
     for hidden_layer_size in params['hidden_layer_sizes']:
-        hidden_layer_prev = Dense(hidden_layer_size, activation='relu')(hidden_layer_prev)
-    out = Dense(y_train.shape[1], activation='softmax')(hidden_layer_prev)  # Output softmax layer
+        hidden_layer_prev = Dense(hidden_layer_size, activation='relu', kernel_initializer='he_normal',)(hidden_layer_prev)
+    out = Dense(y_train.shape[1], activation='softmax', kernel_initializer='he_normal',)(hidden_layer_prev)  # Output softmax layer
     model = Model(inputs=inp, outputs=out)  # To define a model, just specify its input and output layers
-    adam = optimizers.Adam(learning_rate=params['lr'], beta_1=0.9, beta_2=0.999, amsgrad=False)
-    model.compile(loss='categorical_crossentropy', optimizer=adam, metrics=['accuracy'])
-    model.fit(x_train, y_train, batch_size=params['batch_size'], epochs=params['num_epochs'], verbose=2)
+    #adam = optimizers.Adam(learning_rate=params['lr'], beta_1=0.9, beta_2=0.999, amsgrad=False)
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    log = model.fit(x_train, y_train, batch_size=params['batch_size'], epochs=params['num_epochs'],
+              validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=2)
+    return (model, log)
 
-    return model
 
-
-def fit_and_save_model(data, params, save_folder_model, save_folder_log):
+def fit_and_save_model(data, params, save_folder_model, save_folder_log, save_folder_graphs):
     statistics = {}
 
     time_start = datetime.now()
-    model = fit_model(data, params)
+    model, log = fit_model(data, params)
     delta_time = datetime.now() - time_start
     statistics['Time_train'] = delta_time.total_seconds()
 
@@ -59,9 +61,13 @@ def fit_and_save_model(data, params, save_folder_model, save_folder_log):
 
     save_model(model, save_folder_model)
 
-    filename = get_model_name(model) + '.json'
+    model_name = get_model_name(model)
+    filename = model_name + '.json'
     with open(os.path.join(save_folder_log, filename), 'w', encoding='utf-8') as file:
         json.dump(model_info, file)
+
+    ph.save_accuracy_graph(log, model_name, save_folder_graphs)
+    ph.save_loss_graph(log, model_name, save_folder_graphs)
 
 
 def print_model_info(model, save_folder_log):
@@ -70,7 +76,6 @@ def print_model_info(model, save_folder_log):
         model_info = json.load(read_file)
     print(' Parameters:')
     print('batch_size = {}'.format(model_info['Parameters']['batch_size']))
-    print('lr = {}'.format(model_info['Parameters']['lr']))
     print('num_epochs = {}'.format(model_info['Parameters']['num_epochs']))
     print('hidden_layer_sizes = {}'.format(model_info['Parameters']['hidden_layer_sizes']))
     print(' Statistics:')
