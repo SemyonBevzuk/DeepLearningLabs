@@ -78,7 +78,7 @@ def save_loss_graph(log, model_name, save_folder_graphs):
     plt.plot(log.history['loss'], '-o', linewidth=3.0)
     plt.plot(log.history['val_loss'], '-o', linewidth=3.0)
     plt.title(model_name, fontsize=22)
-    plt.legend(['train', 'test'], loc='upper right', fontsize='xx-large')
+    plt.legend(['train', 'test'], loc='upper left', fontsize='xx-large')
     plt.xlabel('Epoch', fontsize=20)
     plt.ylabel('Loss', fontsize=20)
     plt.tick_params(labelsize=18)
