@@ -25,6 +25,28 @@
 
 ## Численные эксперименты
 ### Параметры
+y_test: (12630,)
+
+
+
+x_train = (86989, 3072) y_train = (86989, 43)
+
+x_test = (12630, 3072) y_test = (12630, 43)
+
+hidden_layer_activation = ReLu
+
+output_layer_activation = Softmax
+
+loss = CrossEntropy 
+
+optimizer = Adam
+
+learning_rate = 0.001
+
+batch_size = 128
+
+num_epochs = 10
+
 ### Результаты
 [comment]: # (table_start)
 
