@@ -55,12 +55,22 @@ num_epochs = 10
 
 |        Model name        | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :----------------------- | :-----------: | :-------: | :------------: | :--------: | :------------: |
+| FCNN_128                 |    0.8296     |  1.1413   |     0.9737     |    0.11    |    88.2661     |
+| FCNN_256                 |    0.8372     |  1.1796   |     0.9834     |   0.0749   |    156.494     |
+| FCNN_512                 |    0.8238     |   1.499   |     0.9703     |   0.1017   |    304.0266    |
 | FCNN_768                 |    0.8214     |   1.677   |     0.9585     |   0.155    |    427.9855    |
+| FCNN_1024                |    0.8308     |  1.5203   |     0.9676     |   0.1048   |    577.2817    |
 | FCNN_1536                |    0.8124     |   2.007   |     0.9417     |   0.2375   |    874.5662    |
+| FCNN_2048                |    0.8301     |  1.7861   |     0.972      |   0.1176   |   1169.5461    |
 | FCNN_2304                |    0.8145     |  2.3281   |     0.9579     |   0.1947   |   1296.7679    |
+| FCNN_768_384             |    0.8199     |  1.7376   |     0.9672     |   0.108    |    484.9401    |
+| FCNN_1024_512            |    0.8174     |  1.9054   |     0.9503     |   0.1682   |    667.418     |
 | FCNN_1536_768            |    0.8093     |  2.1071   |     0.9529     |   0.1638   |    1058.444    |
 | FCNN_2304_768            |     0.804     |  1.8858   |     0.9416     |   0.1936   |   1594.2973    |
-| FCNN_1536_768_384_192_96 |    0.7986     |   1.241   |     0.9395     |   0.208    |   1114.9127    |
+| FCNN_768_384_96          |    0.8179     |  1.3722   |     0.9696     |   0.0952   |    488.8518    |
+| FCNN_768_384_192         |    0.8002     |  1.5157   |     0.9477     |   0.1717   |    490.1318    |
+| FCNN_2048_1024_512_256   |    0.7968     |  1.4845   |     0.9442     |   0.1766   |   1666.0184    |
+| FCNN_1536_768_384_192_96 |    0.7874     |  1.3712   |     0.9543     |   0.1568   |   1123.9943    |
 
 [comment]: # (result_table_end)
 
@@ -68,11 +78,21 @@ num_epochs = 10
 
 |                    Accuracy                    |                    Loss                    |
 | :--------------------------------------------- | :----------------------------------------- |
+| ![](img/FCNN_128_accuracy.png)                 | ![](img/FCNN_128_loss.png)                 |
+| ![](img/FCNN_256_accuracy.png)                 | ![](img/FCNN_256_loss.png)                 |
+| ![](img/FCNN_512_accuracy.png)                 | ![](img/FCNN_512_loss.png)                 |
 | ![](img/FCNN_768_accuracy.png)                 | ![](img/FCNN_768_loss.png)                 |
-| ![](img/FCNN_2304_accuracy.png)                | ![](img/FCNN_2304_loss.png)                |
-| ![](img/FCNN_2304_768_accuracy.png)            | ![](img/FCNN_2304_768_loss.png)            |
+| ![](img/FCNN_1024_accuracy.png)                | ![](img/FCNN_1024_loss.png)                |
 | ![](img/FCNN_1536_accuracy.png)                | ![](img/FCNN_1536_loss.png)                |
+| ![](img/FCNN_2048_accuracy.png)                | ![](img/FCNN_2048_loss.png)                |
+| ![](img/FCNN_2304_accuracy.png)                | ![](img/FCNN_2304_loss.png)                |
+| ![](img/FCNN_768_384_accuracy.png)             | ![](img/FCNN_768_384_loss.png)             |
+| ![](img/FCNN_1024_512_accuracy.png)            | ![](img/FCNN_1024_512_loss.png)            |
 | ![](img/FCNN_1536_768_accuracy.png)            | ![](img/FCNN_1536_768_loss.png)            |
+| ![](img/FCNN_2304_768_accuracy.png)            | ![](img/FCNN_2304_768_loss.png)            |
+| ![](img/FCNN_768_384_96_accuracy.png)          | ![](img/FCNN_768_384_96_loss.png)          |
+| ![](img/FCNN_768_384_192_accuracy.png)         | ![](img/FCNN_768_384_192_loss.png)         |
+| ![](img/FCNN_2048_1024_512_256_accuracy.png)   | ![](img/FCNN_2048_1024_512_256_loss.png)   |
 | ![](img/FCNN_1536_768_384_192_96_accuracy.png) | ![](img/FCNN_1536_768_384_192_96_loss.png) |
 
 [comment]: # (graph_table_end)

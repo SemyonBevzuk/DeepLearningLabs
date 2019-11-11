@@ -113,10 +113,11 @@ def generate_graph_table(img_folder):
     for file in os.listdir(img_folder):
         if file.endswith(".png"):
             files.append(file)
-    files.sort(reverse=True)
+    files.sort(key=lambda f: int(''.join(filter(str.isdigit, f))), reverse=False)
+    print(files)
 
     records = []
-    for loss, accuracy in zip(files[0::2], files[1::2]):
+    for accuracy, loss in zip(files[0::2], files[1::2]):
         records.append(['![](img/' + accuracy + ')', '![](img/' + loss + ')'])
 
     headings = ['Accuracy', 'Loss']
@@ -132,10 +133,9 @@ def add_result_table_to_report(report_path, img_folder):
         lines = file.readlines()
 
     open_tag = '[comment]: # (result_table_start)\n'
-    close_tag = '[comment]: # (result_table_ens\n'
+    close_tag = '[comment]: # (result_table_end)\n'
     table_start_index, table_end_index = find_old_table(lines, open_tag, close_tag)
     delete_old_table(lines, table_start_index, table_end_index)
-
     new_lines = create_lines_with_new_table(lines, table, table_start_index)
 
     with open(report_path, 'w', encoding='utf-8') as file:

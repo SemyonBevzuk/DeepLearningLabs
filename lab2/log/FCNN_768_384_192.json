@@ -1,0 +1,1 @@
+{"Parameters": {"batch_size": 128, "num_epochs": 10, "hidden_layer_sizes": [768, 384, 192]}, "Statistics": {"Time_train": 490.13179, "Train_loss": 0.17165666065305424, "Train_accuracy": 0.9476945400238037, "Test_loss": 1.5157005708933065, "Test_accuracy": 0.8002375364303589}}

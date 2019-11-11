@@ -41,30 +41,36 @@ def run_serial_data2():
     params = {'batch_size': 128,
               'num_epochs': 10}
     all_hidden_layer_sizes = [
-        [768],
-        [1536],
-        [2304],
-        [1536, 768],
-        [2304, 768],
-        [1536, 768, 384, 192, 96]
+        [128],
+        [256],
+        [512],
+        [1024],
+        [2048],
+        [1024, 512],
+        [768, 384],
+        [768, 384, 192],
+        [768, 384, 96],
+        [1536, 768, 384, 192, 96],
+        [2048, 1024, 512, 256]
     ]
+    '''
+    [768], [1536], [2304], [1536, 768], [2304, 768], [1536, 768, 384, 192, 96]
+    '''
     run_serial_experiment(data, params, all_hidden_layer_sizes)
 
 
 def main():
     # run_serial_data2()
 
-    # save_folder_model = os.path.join('..', 'models')
-    # save_folder_log = os.path.join('..', 'log')
-    # mh.show_all_models(save_folder_model, save_folder_log)
-
     report_path = os.path.join('..', 'readme.md')
-
     save_folder_log = os.path.join('..', 'log')
-    rh.add_result_table_to_report(report_path, save_folder_log)
-
     save_folder_img = os.path.join('..', 'img')
+    save_folder_model = os.path.join('..', 'models')
+
+    rh.add_result_table_to_report(report_path, save_folder_log)
     rh.add_graph_table_to_report(report_path, save_folder_img)
+
+    # mh.show_all_models(save_folder_model, save_folder_log)
 
 
 if __name__ == "__main__":
