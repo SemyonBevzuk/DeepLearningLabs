@@ -58,11 +58,13 @@ def main():
     # save_folder_log = os.path.join('..', 'log')
     # mh.show_all_models(save_folder_model, save_folder_log)
 
+    report_path = os.path.join('..', 'readme.md')
 
     save_folder_log = os.path.join('..', 'log')
-    report_path = os.path.join('..',  'readme.md')
     rh.add_table_to_report(report_path, save_folder_log)
 
+    save_folder_img = os.path.join('..', 'img')
+    rh.add_graph_table_to_report(report_path, save_folder_img)
 
 
 if __name__ == "__main__":

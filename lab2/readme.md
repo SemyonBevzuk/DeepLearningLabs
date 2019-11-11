@@ -28,7 +28,7 @@
 ### Результаты
 [comment]: # (table_start)
 
-|       Model name         | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
+|        Model name        | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :----------------------- | :-----------: | :-------: | :------------: | :--------: | :------------: |
 | FCNN_768                 |    0.8214     |   1.677   |     0.9585     |   0.155    |    427.9855    |
 | FCNN_1536                |    0.8124     |   2.007   |     0.9417     |   0.2375   |    874.5662    |
@@ -39,9 +39,18 @@
 
 [comment]: # (table_end)
 
-|        Accuracy                 | Loss                           |
-| :------------------------------ | :----------------------------: |
-| ![](img/FCNN_768_accuracy.png)  | ![](img/FCNN_768_loss.png)     |
+[comment]: # (graph_table_start)
+
+|                    Accuracy                    |                    Loss                    |
+| :--------------------------------------------- | :----------------------------------------- |
+| ![](img/FCNN_768_accuracy.png)                 | ![](img/FCNN_768_loss.png)                 |
+| ![](img/FCNN_2304_accuracy.png)                | ![](img/FCNN_2304_loss.png)                |
+| ![](img/FCNN_2304_768_accuracy.png)            | ![](img/FCNN_2304_768_loss.png)            |
+| ![](img/FCNN_1536_accuracy.png)                | ![](img/FCNN_1536_loss.png)                |
+| ![](img/FCNN_1536_768_accuracy.png)            | ![](img/FCNN_1536_768_loss.png)            |
+| ![](img/FCNN_1536_768_384_192_96_accuracy.png) | ![](img/FCNN_1536_768_384_192_96_loss.png) |
+
+[comment]: # (graph_table_end)
 
 ### Анализ
 

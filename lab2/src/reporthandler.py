@@ -5,9 +5,6 @@ left_rule = {'<': ':', '^': ':', '>': '-'}
 right_rule = {'<': '-', '^': ':', '>': ':'}
 
 def evalute_field(record, field_spec):
-    """
-    Evalute a field of a record using the type of the field_spec as a guide.
-    """
     if type(field_spec) is int:
         return str(record[field_spec])
     elif type(field_spec) is str:
@@ -16,29 +13,6 @@ def evalute_field(record, field_spec):
         return str(field_spec(record))
 
 def fill_table(records, fields, headings, alignment = None):
-    """
-    Generate a Doxygen-flavor Markdown table from records.
-
-    file -- Any object with a 'write' method that takes a single string
-        parameter.
-    records -- Iterable.  Rows will be generated from this.
-    fields -- List of fields for each row.  Each entry may be an integer,
-        string or a function.  If the entry is an integer, it is assumed to be
-        an index of each record.  If the entry is a string, it is assumed to be
-        a field of each record.  If the entry is a function, it is called with
-        the record and its return value is taken as the value of the field.
-    headings -- List of column headings.
-    alignment - List of pairs alignment characters.  The first of the pair
-        specifies the alignment of the header, (Doxygen won't respect this, but
-        it might look good, the second specifies the alignment of the cells in
-        the column.
-
-        Possible alignment characters are:
-            '<' = Left align (default for cells)
-            '>' = Right align
-            '^' = Center (default for column headings)
-    """
-
     num_columns = len(fields)
     assert len(headings) == num_columns
 
@@ -83,6 +57,32 @@ def fill_table(records, fields, headings, alignment = None):
     return table
 
 
+def find_old_table(lines, open_tag, close_tag):
+    table_start_index = 0
+    table_end_index = 0
+    for i, line in enumerate(lines):
+        if line == open_tag:
+            table_start_index = i
+        if line == close_tag:
+            table_end_index = i
+            break
+    return (table_start_index, table_end_index)
+
+
+def delete_old_table(lines, table_start_index, table_end_index):
+    for i in range(0, table_end_index - table_start_index - 1):
+        del lines[table_start_index + 1]
+
+
+def create_lines_with_new_table(lines, table, input_index):
+    new_lines = []
+    new_lines.extend(lines[:input_index + 1])
+    new_lines.extend('\n')
+    new_lines.extend(table)
+    new_lines.extend('\n')
+    new_lines.extend(lines[input_index + 1:])
+    return new_lines
+
 def generate_table(save_folder_log):
     records = []
     for file in os.listdir(save_folder_log):
@@ -108,30 +108,53 @@ def generate_table(save_folder_log):
     return fill_table(records, fields, headings, align)
 
 
-def add_table_to_report(report_path, log_folder):
-    table = generate_table(log_folder)
+def generate_graph_table(img_folder):
+    files = []
+    for file in os.listdir(img_folder):
+        if file.endswith(".png"):
+            files.append(file)
+    files.sort(reverse=True)
+
+    records = []
+    for loss, accuracy in zip(files[0::2], files[1::2]):
+        records.append(['![](img/' + accuracy + ')', '![](img/' + loss + ')'])
+
+    headings = ['Accuracy', 'Loss']
+    fields = [0, 1]
+    align = [('^', '<'), ('^', '<')]
+    return fill_table(records, fields, headings, align)
+
+
+def add_table_to_report(report_path, img_folder):
+    table = generate_table(img_folder)
 
     with open(report_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()
 
-    table_start_index = 0
-    table_end_index = 0
-    for i, line in enumerate(lines):
-        if line == '[comment]: # (table_start)\n':
-            table_start_index = i
-        if line == '[comment]: # (table_end)\n':
-            table_end_index = i
-            break
+    open_tag = '[comment]: # (table_start)\n'
+    close_tag = '[comment]: # (table_end)\n'
+    table_start_index, table_end_index = find_old_table(lines, open_tag, close_tag)
+    delete_old_table(lines, table_start_index, table_end_index)
 
-    for i in range(0, table_end_index - table_start_index - 1):
-        del lines[table_start_index + 1]
-
-    new_lines = []
-    new_lines.extend(lines[:table_start_index + 1])
-    new_lines.extend('\n')
-    new_lines.extend(table)
-    new_lines.extend('\n')
-    new_lines.extend(lines[table_start_index + 1:])
+    new_lines = create_lines_with_new_table(lines, table, table_start_index)
 
     with open(report_path, 'w', encoding='utf-8') as file:
         file.writelines(new_lines)
+
+
+def add_graph_table_to_report(report_path, img_folder):
+    table = generate_graph_table(img_folder)
+
+    with open(report_path, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+
+    open_tag = '[comment]: # (graph_table_start)\n'
+    close_tag = '[comment]: # (graph_table_end)\n'
+    table_start_index, table_end_index = find_old_table(lines, open_tag, close_tag)
+    delete_old_table(lines, table_start_index, table_end_index)
+
+    new_lines = create_lines_with_new_table(lines, table, table_start_index)
+
+    with open(report_path, 'w', encoding='utf-8') as file:
+        file.writelines(new_lines)
+
