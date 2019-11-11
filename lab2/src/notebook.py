@@ -61,7 +61,7 @@ def main():
     report_path = os.path.join('..', 'readme.md')
 
     save_folder_log = os.path.join('..', 'log')
-    rh.add_table_to_report(report_path, save_folder_log)
+    rh.add_result_table_to_report(report_path, save_folder_log)
 
     save_folder_img = os.path.join('..', 'img')
     rh.add_graph_table_to_report(report_path, save_folder_img)

@@ -83,7 +83,7 @@ def create_lines_with_new_table(lines, table, input_index):
     new_lines.extend(lines[input_index + 1:])
     return new_lines
 
-def generate_table(save_folder_log):
+def generate_result_table(save_folder_log):
     records = []
     for file in os.listdir(save_folder_log):
         if file.endswith(".json"):
@@ -125,14 +125,14 @@ def generate_graph_table(img_folder):
     return fill_table(records, fields, headings, align)
 
 
-def add_table_to_report(report_path, img_folder):
-    table = generate_table(img_folder)
+def add_result_table_to_report(report_path, img_folder):
+    table = generate_result_table(img_folder)
 
     with open(report_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()
 
-    open_tag = '[comment]: # (table_start)\n'
-    close_tag = '[comment]: # (table_end)\n'
+    open_tag = '[comment]: # (result_table_start)\n'
+    close_tag = '[comment]: # (result_table_ens\n'
     table_start_index, table_end_index = find_old_table(lines, open_tag, close_tag)
     delete_old_table(lines, table_start_index, table_end_index)
 
