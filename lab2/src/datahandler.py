@@ -17,7 +17,7 @@ def read_raw_data(path):
     return data
 
 
-def get_data(path):
+def get_vector_data(path):
     data = read_raw_data(path)
     data['x_train'] = data['x_train'].reshape(
         data['x_train'].shape[0],

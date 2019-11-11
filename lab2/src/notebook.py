@@ -3,9 +3,12 @@ from keras import Input, Model, optimizers
 from keras.layers import Dense
 import json
 
+import sys
+
 import datahandler as dh
 import modelhandler as mh
 import plthandler as ph
+import reporthandler as rh
 
 import os
 
@@ -30,10 +33,10 @@ def run_serial_experiment(data, params, all_hidden_layer_sizes):
     mh.show_models(save_folder_model, models, save_folder_log)
 
 
-def main():
+def run_serial_data2():
     filename = 'data2.pickle'
     path = os.path.join('..', '..', 'data', filename)
-    data = dh.get_data(path)
+    data = dh.get_vector_data(path)
     dh.print_data_information(data)
     params = {'batch_size': 128,
               'num_epochs': 10}
@@ -46,6 +49,20 @@ def main():
         [1536, 768, 384, 192, 96]
     ]
     run_serial_experiment(data, params, all_hidden_layer_sizes)
+
+
+def main():
+    # run_serial_data2()
+
+    # save_folder_model = os.path.join('..', 'models')
+    # save_folder_log = os.path.join('..', 'log')
+    # mh.show_all_models(save_folder_model, save_folder_log)
+
+
+    save_folder_log = os.path.join('..', 'log')
+    report_path = os.path.join('..',  'readme.md')
+    rh.add_table_to_report(report_path, save_folder_log)
+
 
 
 if __name__ == "__main__":
