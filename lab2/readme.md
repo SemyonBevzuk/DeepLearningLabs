@@ -25,13 +25,14 @@
 
 ## Численные эксперименты
 ### Параметры
-y_test: (12630,)
 
+x_train = (86989, 3072)
 
+y_train = (86989, 43)
 
-x_train = (86989, 3072) y_train = (86989, 43)
+x_test = (12630, 3072) 
 
-x_test = (12630, 3072) y_test = (12630, 43)
+y_test = (12630, 43)
 
 hidden_layer_activation = ReLu
 
@@ -48,7 +49,7 @@ batch_size = 128
 num_epochs = 10
 
 ### Результаты
-[comment]: # (table_start)
+[comment]: # (result_table_start)
 
 |        Model name        | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :----------------------- | :-----------: | :-------: | :------------: | :--------: | :------------: |
@@ -59,7 +60,7 @@ num_epochs = 10
 | FCNN_2304_768            |     0.804     |  1.8858   |     0.9416     |   0.1936   |   1594.2973    |
 | FCNN_1536_768_384_192_96 |    0.7986     |   1.241   |     0.9395     |   0.208    |   1114.9127    |
 
-[comment]: # (table_end)
+[comment]: # (result_table_end)
 
 [comment]: # (graph_table_start)
 
