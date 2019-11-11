@@ -128,7 +128,9 @@ def add_table_to_report(report_path, log_folder):
 
     new_lines = []
     new_lines.extend(lines[:table_start_index + 1])
+    new_lines.extend('\n')
     new_lines.extend(table)
+    new_lines.extend('\n')
     new_lines.extend(lines[table_start_index + 1:])
 
     with open(report_path, 'w', encoding='utf-8') as file:
