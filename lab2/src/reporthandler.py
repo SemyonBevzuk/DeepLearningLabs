@@ -99,7 +99,7 @@ def generate_table(save_folder_log):
             records.append(record)
     records.sort(key=lambda x: len(x[0]))
 
-    headings = ['Model name', 'Test accuracy.', 'Test loss', 'Train accuracy', 'Train loss',
+    headings = ['Model name', 'Test accuracy', 'Test loss', 'Train accuracy', 'Train loss',
                 'Time_train (s)']
     fields = [0, 1, 2, 3, 4, 5]
     align = [('^', '<'), ('^', '^'), ('^', '^'), ('^', '^'), ('^', '^'),
