@@ -1,1 +1,1 @@
-{"Parameters": {"batch_size": 128, "num_epochs": 10, "hidden_layer_sizes": [768, 384, 96]}, "Statistics": {"Time_train": 488.851849, "Train_loss": 0.09523745941131147, "Train_accuracy": 0.9696398377418518, "Test_loss": 1.3722100205961334, "Test_accuracy": 0.817893922328949}}
+{"Parameters": {"batch_size": 128, "num_epochs": 15, "hidden_layer_sizes": [768, 384, 96]}, "Statistics": {"Time_train": 726.646776, "Train_loss": 0.1335314328395437, "Train_accuracy": 0.9602363705635071, "Test_loss": 1.6932183438884014, "Test_accuracy": 0.8272367119789124}}
