@@ -114,7 +114,6 @@ def generate_graph_table(img_folder):
         if file.endswith(".png"):
             files.append(file)
     files.sort(key=lambda f: int(''.join(filter(str.isdigit, f))), reverse=False)
-    print(files)
 
     records = []
     for accuracy, loss in zip(files[0::2], files[1::2]):

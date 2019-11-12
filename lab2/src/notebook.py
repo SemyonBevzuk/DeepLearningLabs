@@ -39,28 +39,33 @@ def run_serial_data2():
     data = dh.get_vector_data(path)
     dh.print_data_information(data)
     params = {'batch_size': 128,
-              'num_epochs': 10}
+              'num_epochs': 15}
     all_hidden_layer_sizes = [
         [128],
+        [200],
         [256],
+        [300],
         [512],
+        [768],
         [1024],
+        [1536],
         [2048],
-        [1024, 512],
+        [2304],
         [768, 384],
+        [1024, 512],
+        [1536, 768],
+        [2304, 768],
         [768, 384, 192],
         [768, 384, 96],
-        [1536, 768, 384, 192, 96],
-        [2048, 1024, 512, 256]
+        [2048, 1024, 512, 256],
+        [1536, 768, 384, 192, 96]
     ]
-    '''
-    [768], [1536], [2304], [1536, 768], [2304, 768], [1536, 768, 384, 192, 96]
-    '''
+
     run_serial_experiment(data, params, all_hidden_layer_sizes)
 
 
 def main():
-    # run_serial_data2()
+    run_serial_data2()
 
     report_path = os.path.join('..', 'readme.md')
     save_folder_log = os.path.join('..', 'log')
