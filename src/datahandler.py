@@ -1,4 +1,3 @@
-
 from keras.utils.np_utils import to_categorical
 import pickle
 import re

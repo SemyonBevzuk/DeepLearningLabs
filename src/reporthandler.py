@@ -156,4 +156,3 @@ def add_graph_table_to_report(report_path, img_folder):
 
     with open(report_path, 'w', encoding='utf-8') as file:
         file.writelines(new_lines)
-

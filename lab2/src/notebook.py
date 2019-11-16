@@ -1,16 +1,13 @@
-from datetime import datetime
-from keras import Input, Model, optimizers
-from keras.layers import Dense
-import json
-
+import os
 import sys
+sys.path.append('../../src/')
 
 import datahandler as dh
 import modelhandler as mh
 import plthandler as ph
 import reporthandler as rh
 
-import os
+
 
 
 def run_serial_experiment(data, params, all_hidden_layer_sizes):
@@ -65,7 +62,7 @@ def run_serial_data2():
 
 
 def main():
-    run_serial_data2()
+    #run_serial_data2()
 
     report_path = os.path.join('..', 'readme.md')
     save_folder_log = os.path.join('..', 'log')
