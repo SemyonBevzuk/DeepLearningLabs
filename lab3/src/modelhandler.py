@@ -5,18 +5,28 @@ import plthandler as ph
 
 from datetime import datetime
 from keras.models import Model, load_model
-from keras.layers import Input, Dense
+from keras.layers import Input, Conv2D, MaxPool2D, Flatten, Dense
+from keras import Sequential
 
 import json
 import os
 
 
 def get_model_name(model):
-    filename = 'FCNN'
-    layers = model.layers[1:-1]
+    filename = 'CNN'
+    layers = model.layers[:-1]
     for layer in layers:
         config = layer.get_config()
-        filename += '_' + str(config['units'])
+        layer_type = config['name'][:-2]
+        #print(config['name'][:-2])
+        filename += '_' + layer_type
+        if layer_type == 'conv2d':
+            filename += '_' + str(config['kernel_size'][0]) + 'x' + str(config['kernel_size'][1])
+        elif layer_type == 'max_pooling2d':
+            filename += '_' + str(config['pool_size'][0]) + 'x' + str(config['pool_size'][1])
+        elif layer_type == 'dense':
+            filename += '_' + str(config['units'])
+
     return filename
 
 
@@ -30,15 +40,23 @@ def fit_model(data, params):
     x_train = data['x_train']
     y_train = data['y_train']
 
-    inp = Input(shape=(x_train.shape[1],))  # Our input is a 1D vector of size 32*32*3
-    hidden_layer_prev = inp
-    for hidden_layer_size in params['hidden_layer_sizes']:
-        hidden_layer_prev = Dense(hidden_layer_size, activation='relu', kernel_initializer='he_normal', )(
-            hidden_layer_prev)
-    out = Dense(y_train.shape[1], activation='softmax', kernel_initializer='he_normal', )(
-        hidden_layer_prev)  # Output softmax layer
-    model = Model(inputs=inp, outputs=out)  # To define a model, just specify its input and output layers
-    # adam = optimizers.Adam(learning_rate=params['lr'], beta_1=0.9, beta_2=0.999, amsgrad=False)
+    model = Sequential()
+    model.add(Conv2D(filters=params['layers'][0]['filters'], kernel_size=params['layers'][0]['kernel_size'],
+                     padding=params['layers'][0]['padding'], activation='relu',
+                     input_shape=(data['x_train'].shape[1], data['x_train'].shape[2], data['x_train'].shape[3])))
+    for layer in params['layers'][1:]:
+        if layer['name'] == 'Conv2D':
+            model.add(Conv2D(filters=layer['filters'], kernel_size=layer['kernel_size'],
+                             padding=layer['padding'], activation='relu'))
+        if layer['name'] == 'MaxPool2D':
+            model.add(MaxPool2D(pool_size=layer['pool_size']))
+        if layer['name'] == 'Flatten':
+            model.add(Flatten())
+        if layer['name'] == 'Dense':
+            model.add(Dense(units=layer['units']))
+    model.add(Dense(units=y_train.shape[1], activation='softmax'))
+    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     log = model.fit(x_train, y_train, batch_size=params['batch_size'], epochs=params['num_epochs'],
                     validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=2)
@@ -72,6 +90,7 @@ def fit_and_save_model(data, params, save_folder_model, save_folder_log, save_fo
 
     ph.save_accuracy_graph(log, model_name, save_folder_graphs)
     ph.save_loss_graph(log, model_name, save_folder_graphs)
+    return model_name
 
 
 def print_model_info(model, save_folder_log):
@@ -81,7 +100,7 @@ def print_model_info(model, save_folder_log):
     print(' Parameters:')
     print('batch_size = {}'.format(model_info['Parameters']['batch_size']))
     print('num_epochs = {}'.format(model_info['Parameters']['num_epochs']))
-    print('hidden_layer_sizes = {}'.format(model_info['Parameters']['hidden_layer_sizes']))
+    print('layers = {}'.format(model_info['Parameters']['layers']))
     print(' Statistics:')
     print('Time_train = {}'.format(model_info['Statistics']['Time_train']))
     print('Train_loss = {}'.format(model_info['Statistics']['Train_loss']))

@@ -1,7 +1,7 @@
-# Лабораторная работа №2
-Реализация полносвязной нейронной сети для задачи классификации.
+# Лабораторная работа №3
+Реализация свёрточной нейронной сети для задачи классификации.
 
-Сравнение конфигураций полносвязных нейронных сетей.
+Сравнение конфигураций свёрточных нейронных сетей.
 
 # Описание директорий
 
@@ -28,76 +28,20 @@
 ## Численные эксперименты
 ### Параметры
 
-x_train = (86989, 3072)
-
-y_train = (86989, 43)
-
-x_test = (12630, 3072) 
-
-y_test = (12630, 43)
-
-hidden_layer_activation = ReLu
-
-output_layer_activation = Softmax
-
-loss = CrossEntropy 
-
-optimizer = Adam
-
-learning_rate = 0.001
-
-batch_size = 128
-
-num_epochs = 15
-
 ### Результаты
 [comment]: # (result_table_start)
 
-|        Model name        | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
-| :----------------------- | :-----------: | :-------: | :------------: | :--------: | :------------: |
-| FCNN_128                 |    0.8389     |  1.2112   |     0.9699     |   0.1048   |    129.3543    |
-| FCNN_200                 |    0.8298     |  1.3422   |     0.9631     |   0.131    |    183.3019    |
-| FCNN_256                 |    0.8318     |  1.3828   |     0.9768     |   0.0839   |    233.5805    |
-| FCNN_300                 |    0.8199     |  1.5928   |     0.9707     |   0.1028   |    272.8827    |
-| FCNN_512                 |     0.83      |  1.6081   |     0.9713     |   0.0961   |    440.9299    |
-| FCNN_768                 |    0.8304     |  1.8328   |     0.9717     |   0.1066   |    645.9815    |
-| FCNN_1024                |    0.8139     |  2.1581   |     0.9548     |   0.2022   |    861.3704    |
-| FCNN_1536                |    0.8226     |  2.3028   |     0.9754     |   0.0896   |   1285.1339    |
-| FCNN_2048                |    0.8088     |  2.8824   |     0.9552     |   0.2181   |   1749.6416    |
-| FCNN_2304                |    0.8306     |   2.309   |     0.9493     |   0.2349   |   1940.3959    |
-| FCNN_768_384             |    0.8261     |  2.1872   |     0.9685     |   0.1121   |    720.983     |
-| FCNN_1024_512            |    0.7979     |   2.644   |     0.9596     |   0.1457   |   1003.5661    |
-| FCNN_1536_768            |    0.8237     |  2.4898   |     0.9703     |   0.1043   |   1582.1086    |
-| FCNN_2304_768            |      0.8      |  3.1957   |     0.9434     |   0.2568   |    2378.945    |
-| FCNN_768_384_96          |    0.8272     |  1.6932   |     0.9602     |   0.1335   |    726.6468    |
-| FCNN_768_384_192         |    0.8144     |  1.8249   |     0.9664     |   0.1153   |    727.8066    |
-| FCNN_2048_1024_512_256   |     0.836     |  1.4335   |     0.9761     |   0.0745   |   2476.1017    |
-| FCNN_1536_768_384_192_96 |    0.8137     |  1.1759   |     0.9548     |   0.1486   |   1671.4964    |
+|                Model name                | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
+| :--------------------------------------- | :-----------: | :-------: | :------------: | :--------: | :------------: |
+| CNN_conv2d_3x3_max_pooling2d_2x2_flatten |    0.8268     |  0.6671   |     0.9187     |   0.3953   |    48.5309     |
 
 [comment]: # (result_table_end)
 
 [comment]: # (graph_table_start)
 
-|                    Accuracy                    |                    Loss                    |
-| :--------------------------------------------- | :----------------------------------------- |
-| ![](img/FCNN_128_accuracy.png)                 | ![](img/FCNN_128_loss.png)                 |
-| ![](img/FCNN_200_accuracy.png)                 | ![](img/FCNN_200_loss.png)                 |
-| ![](img/FCNN_256_accuracy.png)                 | ![](img/FCNN_256_loss.png)                 |
-| ![](img/FCNN_300_accuracy.png)                 | ![](img/FCNN_300_loss.png)                 |
-| ![](img/FCNN_512_accuracy.png)                 | ![](img/FCNN_512_loss.png)                 |
-| ![](img/FCNN_768_accuracy.png)                 | ![](img/FCNN_768_loss.png)                 |
-| ![](img/FCNN_1024_accuracy.png)                | ![](img/FCNN_1024_loss.png)                |
-| ![](img/FCNN_1536_accuracy.png)                | ![](img/FCNN_1536_loss.png)                |
-| ![](img/FCNN_2048_accuracy.png)                | ![](img/FCNN_2048_loss.png)                |
-| ![](img/FCNN_2304_accuracy.png)                | ![](img/FCNN_2304_loss.png)                |
-| ![](img/FCNN_768_384_accuracy.png)             | ![](img/FCNN_768_384_loss.png)             |
-| ![](img/FCNN_1024_512_accuracy.png)            | ![](img/FCNN_1024_512_loss.png)            |
-| ![](img/FCNN_1536_768_accuracy.png)            | ![](img/FCNN_1536_768_loss.png)            |
-| ![](img/FCNN_2304_768_accuracy.png)            | ![](img/FCNN_2304_768_loss.png)            |
-| ![](img/FCNN_768_384_96_accuracy.png)          | ![](img/FCNN_768_384_96_loss.png)          |
-| ![](img/FCNN_768_384_192_accuracy.png)         | ![](img/FCNN_768_384_192_loss.png)         |
-| ![](img/FCNN_2048_1024_512_256_accuracy.png)   | ![](img/FCNN_2048_1024_512_256_loss.png)   |
-| ![](img/FCNN_1536_768_384_192_96_accuracy.png) | ![](img/FCNN_1536_768_384_192_96_loss.png) |
+|                            Accuracy                            |                            Loss                            |
+| :------------------------------------------------------------- | :--------------------------------------------------------- |
+| ![](img/CNN_conv2d_3x3_max_pooling2d_2x2_flatten_accuracy.png) | ![](img/CNN_conv2d_3x3_max_pooling2d_2x2_flatten_loss.png) |
 
 [comment]: # (graph_table_end)
 
