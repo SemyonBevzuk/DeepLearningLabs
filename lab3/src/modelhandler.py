@@ -6,7 +6,6 @@ import plthandler as ph
 from datetime import datetime
 from keras.models import Model, load_model
 from keras.layers import Input, Dense
-from keras import Sequential
 
 import json
 import os
@@ -39,14 +38,7 @@ def fit_model(data, params):
     out = Dense(y_train.shape[1], activation='softmax', kernel_initializer='he_normal', )(
         hidden_layer_prev)  # Output softmax layer
     model = Model(inputs=inp, outputs=out)  # To define a model, just specify its input and output layers
-    '''
-    model = Sequential()
-    model.add(Dense(x_train.shape[1], activation='relu', kernel_initializer='he_normal', ))
-    for hidden_layer_size in params['hidden_layer_sizes']:
-        model.add(Dense(hidden_layer_size, activation='relu', kernel_initializer='he_normal', ))
-    model.add(Dense(y_train.shape[1], activation='softmax', kernel_initializer='he_normal', ))
-    '''
-
+    # adam = optimizers.Adam(learning_rate=params['lr'], beta_1=0.9, beta_2=0.999, amsgrad=False)
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     log = model.fit(x_train, y_train, batch_size=params['batch_size'], epochs=params['num_epochs'],
                     validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=2)

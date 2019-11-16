@@ -37,7 +37,7 @@ def run_serial_data2():
     dh.print_data_information(data)
     params = {'batch_size': 128,
               'num_epochs': 15}
-    all_hidden_layer_sizes_1 = [
+    all_hidden_layer_sizes = [
         [128],
         [200],
         [256],
@@ -58,13 +58,11 @@ def run_serial_data2():
         [1536, 768, 384, 192, 96]
     ]
 
-    all_hidden_layer_sizes = [[128]]
-
     run_serial_experiment(data, params, all_hidden_layer_sizes)
 
 
 def main():
-    run_serial_data2()
+    #run_serial_data2()
 
     report_path = os.path.join('..', 'readme.md')
     save_folder_log = os.path.join('..', 'log')

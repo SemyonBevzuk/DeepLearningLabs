@@ -27,6 +27,11 @@ def get_vector_data(path):
     return data
 
 
+def get_matrix_data(path):
+    data = read_raw_data(path)
+    return data
+
+
 def print_data_information(data):
     for i, j in data.items():
         if i == 'labels':
