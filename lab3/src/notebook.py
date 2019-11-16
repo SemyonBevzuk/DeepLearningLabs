@@ -37,13 +37,12 @@ def run_serial_data2():
               'num_epochs': 5}
     all_layers = [
         [
-            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 1, 'padding': 'same'},
-            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same'},
+            {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 5, 'padding': 'same'},
+            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
             {'name': 'Flatten'},
-            {'name': 'Danse', 'units': 300}
+            {'name': 'Dense', 'units': 300}
         ],
         [
             {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
@@ -51,19 +50,41 @@ def run_serial_data2():
             {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
             {'name': 'Flatten'},
-            {'name': 'Danse', 'units': 300}
+            {'name': 'Dense', 'units': 300}
+        ],
+        [
+            {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Flatten'},
+            {'name': 'Dense', 'units': 300}
+        ],
+        [
+            {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Flatten'},
+            {'name': 'Dense', 'units': 300}
         ],
         [
             {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
             {'name': 'Flatten'},
-            {'name': 'Danse', 'units': 500}
+            {'name': 'Dense', 'units': 500}
         ],
         [
             {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
             {'name': 'Flatten'},
-            {'name': 'Danse', 'units': 128}
+            {'name': 'Dense', 'units': 300}
+        ],
+        [
+            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Flatten'},
+            {'name': 'Dense', 'units': 128}
         ]
     ]
     run_serial_experiment(data, params, all_layers)

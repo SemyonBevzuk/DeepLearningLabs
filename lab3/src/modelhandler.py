@@ -14,14 +14,15 @@ import os
 
 def get_model_name(model):
     filename = 'CNN'
-    layers = model.layers[:-1]
-    for layer in layers:
+    layers = model.layers
+    for layer in layers[:-1]:
         config = layer.get_config()
         layer_type = config['name'][:-2]
         #print(config['name'][:-2])
         filename += '_' + layer_type
         if layer_type == 'conv2d':
-            filename += '_' + str(config['kernel_size'][0]) + 'x' + str(config['kernel_size'][1])
+            filename += '_' + str(config['filters']) + '_' + \
+                        str(config['kernel_size'][0]) + 'x' + str(config['kernel_size'][1])
         elif layer_type == 'max_pooling2d':
             filename += '_' + str(config['pool_size'][0]) + 'x' + str(config['pool_size'][1])
         elif layer_type == 'dense':
@@ -42,19 +43,19 @@ def fit_model(data, params):
 
     model = Sequential()
     model.add(Conv2D(filters=params['layers'][0]['filters'], kernel_size=params['layers'][0]['kernel_size'],
-                     padding=params['layers'][0]['padding'], activation='relu',
+                     padding=params['layers'][0]['padding'], activation='relu', kernel_initializer='he_normal',
                      input_shape=(data['x_train'].shape[1], data['x_train'].shape[2], data['x_train'].shape[3])))
     for layer in params['layers'][1:]:
         if layer['name'] == 'Conv2D':
             model.add(Conv2D(filters=layer['filters'], kernel_size=layer['kernel_size'],
-                             padding=layer['padding'], activation='relu'))
+                             padding=layer['padding'], activation='relu', kernel_initializer='he_normal'))
         if layer['name'] == 'MaxPool2D':
             model.add(MaxPool2D(pool_size=layer['pool_size']))
         if layer['name'] == 'Flatten':
             model.add(Flatten())
         if layer['name'] == 'Dense':
-            model.add(Dense(units=layer['units']))
-    model.add(Dense(units=y_train.shape[1], activation='softmax'))
+            model.add(Dense(units=layer['units'], kernel_initializer='he_normal'))
+    model.add(Dense(units=y_train.shape[1], activation='softmax', kernel_initializer='he_normal'))
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
