@@ -1,4 +1,7 @@
+import re
 import sys
+import json
+import os
 
 sys.path.append('../../src/')
 import plthandler as ph
@@ -8,17 +11,14 @@ from keras.models import Model, load_model
 from keras.layers import Input, Conv2D, MaxPool2D, Flatten, Dense, Dropout
 from keras import Sequential
 
-import json
-import os
-
 
 def get_model_name(model):
     filename = 'CNN'
     layers = model.layers
     for layer in layers[:-1]:
         config = layer.get_config()
-        layer_type = config['name'][:-2]
-        #print(config['name'][:-2])
+        layer_type = re.match(r'((\w+_)+)', config['name'])[0][:-1]
+        # print(config['name'].split('_')[0])
         filename += '_' + layer_type
         if layer_type == 'conv2d':
             filename += '_' + str(config['filters']) + '_' + \
@@ -64,7 +64,7 @@ def fit_model(data, params):
 
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     log = model.fit(x_train, y_train, batch_size=params['batch_size'], epochs=params['num_epochs'],
-                    validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=2)
+                    validation_data=(data['x_test'], data['y_test']]), shuffle=True, verbose=2)
     return (model, log)
 
 
@@ -95,6 +95,7 @@ def fit_and_save_model(data, params, save_folder_model, save_folder_log, save_fo
 
     ph.save_accuracy_graph(log, model_name, save_folder_graphs)
     ph.save_loss_graph(log, model_name, save_folder_graphs)
+    ph.save_model_graph(model, model_name, save_folder_graphs)
     return model_name
 
 
