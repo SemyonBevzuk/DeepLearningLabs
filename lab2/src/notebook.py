@@ -1,5 +1,8 @@
 import os
 import sys
+
+from keras.engine.saving import load_model
+
 sys.path.append('../../src/')
 
 import datahandler as dh
@@ -73,6 +76,7 @@ def main():
 
     rh.add_result_table_to_report(report_path, save_folder_log)
     rh.add_graph_table_to_report(report_path, save_folder_img)
+    rh.add_graph_model_table_to_report(report_path, save_folder_img)
 
     # mh.show_all_models(save_folder_model, save_folder_log)
 

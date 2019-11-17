@@ -117,9 +117,27 @@ def generate_graph_table(img_folder):
 
     records = []
     for accuracy, loss in zip(files[0::2], files[1::2]):
-        records.append(['![](img/' + accuracy + ')', '![](img/' + loss + ')'])
+        records.append(['![](img/graph_loss_accuracy/' + accuracy + ')', '![](img/graph_loss_accuracy/' + loss + ')'])
 
     headings = ['Accuracy', 'Loss']
+    fields = [0, 1]
+    align = [('^', '<'), ('^', '<')]
+    return fill_table(records, fields, headings, align)
+
+
+def generate_graph_model_table(img_folder):
+    files = []
+    for file in os.listdir(img_folder):
+        if file.endswith(".png"):
+            files.append(file)
+    files.sort(key=lambda f: int(''.join(filter(str.isdigit, f))), reverse=False)
+
+    records = []
+    for file in files:
+        record = [os.path.splitext(file)[0], '![](img/graph_model/' + file + ')']
+        records.append(record)
+
+    headings = ['Model name', 'Model graph']
     fields = [0, 1]
     align = [('^', '<'), ('^', '<')]
     return fill_table(records, fields, headings, align)
@@ -142,13 +160,29 @@ def add_result_table_to_report(report_path, img_folder):
 
 
 def add_graph_table_to_report(report_path, img_folder):
-    table = generate_graph_table(img_folder)
+    table = generate_graph_table(os.path.join(img_folder, 'graph_loss_accuracy'))
 
     with open(report_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()
 
     open_tag = '[comment]: # (graph_table_start)\n'
     close_tag = '[comment]: # (graph_table_end)\n'
+    table_start_index, table_end_index = find_old_table(lines, open_tag, close_tag)
+    delete_old_table(lines, table_start_index, table_end_index)
+
+    new_lines = create_lines_with_new_table(lines, table, table_start_index)
+
+    with open(report_path, 'w', encoding='utf-8') as file:
+        file.writelines(new_lines)
+
+def add_graph_model_table_to_report(report_path, img_folder):
+    table = generate_graph_model_table(os.path.join(img_folder, 'graph_model'))
+
+    with open(report_path, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+
+    open_tag = '[comment]: # (graph_model_table_start)\n'
+    close_tag = '[comment]: # (graph_model_table_end)\n'
     table_start_index, table_end_index = find_old_table(lines, open_tag, close_tag)
     delete_old_table(lines, table_start_index, table_end_index)
 

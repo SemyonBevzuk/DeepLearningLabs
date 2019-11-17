@@ -1,4 +1,26 @@
 # Лабораторная работа №2
+
+|           Model name           |                       Model graph                       |
+| :----------------------------- | :------------------------------------------------------ |
+| FCNN_128_model                 | ![](img/graph_model/FCNN_128_model.png)                 |
+| FCNN_200_model                 | ![](img/graph_model/FCNN_200_model.png)                 |
+| FCNN_256_model                 | ![](img/graph_model/FCNN_256_model.png)                 |
+| FCNN_300_model                 | ![](img/graph_model/FCNN_300_model.png)                 |
+| FCNN_512_model                 | ![](img/graph_model/FCNN_512_model.png)                 |
+| FCNN_768_model                 | ![](img/graph_model/FCNN_768_model.png)                 |
+| FCNN_1024_model                | ![](img/graph_model/FCNN_1024_model.png)                |
+| FCNN_1536_model                | ![](img/graph_model/FCNN_1536_model.png)                |
+| FCNN_2048_model                | ![](img/graph_model/FCNN_2048_model.png)                |
+| FCNN_2304_model                | ![](img/graph_model/FCNN_2304_model.png)                |
+| FCNN_768_384_model             | ![](img/graph_model/FCNN_768_384_model.png)             |
+| FCNN_1024_512_model            | ![](img/graph_model/FCNN_1024_512_model.png)            |
+| FCNN_1536_768_model            | ![](img/graph_model/FCNN_1536_768_model.png)            |
+| FCNN_2304_768_model            | ![](img/graph_model/FCNN_2304_768_model.png)            |
+| FCNN_768_384_96_model          | ![](img/graph_model/FCNN_768_384_96_model.png)          |
+| FCNN_768_384_192_model         | ![](img/graph_model/FCNN_768_384_192_model.png)         |
+| FCNN_2048_1024_512_256_model   | ![](img/graph_model/FCNN_2048_1024_512_256_model.png)   |
+| FCNN_1536_768_384_192_96_model | ![](img/graph_model/FCNN_1536_768_384_192_96_model.png) |
+
 Реализация полносвязной нейронной сети для задачи классификации.
 
 Сравнение конфигураций полносвязных нейронных сетей.
@@ -78,26 +100,26 @@ num_epochs = 15
 
 [comment]: # (graph_table_start)
 
-|                    Accuracy                    |                    Loss                    |
-| :--------------------------------------------- | :----------------------------------------- |
-| ![](img/FCNN_128_accuracy.png)                 | ![](img/FCNN_128_loss.png)                 |
-| ![](img/FCNN_200_accuracy.png)                 | ![](img/FCNN_200_loss.png)                 |
-| ![](img/FCNN_256_accuracy.png)                 | ![](img/FCNN_256_loss.png)                 |
-| ![](img/FCNN_300_accuracy.png)                 | ![](img/FCNN_300_loss.png)                 |
-| ![](img/FCNN_512_accuracy.png)                 | ![](img/FCNN_512_loss.png)                 |
-| ![](img/FCNN_768_accuracy.png)                 | ![](img/FCNN_768_loss.png)                 |
-| ![](img/FCNN_1024_accuracy.png)                | ![](img/FCNN_1024_loss.png)                |
-| ![](img/FCNN_1536_accuracy.png)                | ![](img/FCNN_1536_loss.png)                |
-| ![](img/FCNN_2048_accuracy.png)                | ![](img/FCNN_2048_loss.png)                |
-| ![](img/FCNN_2304_accuracy.png)                | ![](img/FCNN_2304_loss.png)                |
-| ![](img/FCNN_768_384_accuracy.png)             | ![](img/FCNN_768_384_loss.png)             |
-| ![](img/FCNN_1024_512_accuracy.png)            | ![](img/FCNN_1024_512_loss.png)            |
-| ![](img/FCNN_1536_768_accuracy.png)            | ![](img/FCNN_1536_768_loss.png)            |
-| ![](img/FCNN_2304_768_accuracy.png)            | ![](img/FCNN_2304_768_loss.png)            |
-| ![](img/FCNN_768_384_96_accuracy.png)          | ![](img/FCNN_768_384_96_loss.png)          |
-| ![](img/FCNN_768_384_192_accuracy.png)         | ![](img/FCNN_768_384_192_loss.png)         |
-| ![](img/FCNN_2048_1024_512_256_accuracy.png)   | ![](img/FCNN_2048_1024_512_256_loss.png)   |
-| ![](img/FCNN_1536_768_384_192_96_accuracy.png) | ![](img/FCNN_1536_768_384_192_96_loss.png) |
+|                              Accuracy                              |                              Loss                              |
+| :----------------------------------------------------------------- | :------------------------------------------------------------- |
+| ![](img/graph_loss_accuracy/FCNN_128_accuracy.png)                 | ![](img/graph_loss_accuracy/FCNN_128_loss.png)                 |
+| ![](img/graph_loss_accuracy/FCNN_200_accuracy.png)                 | ![](img/graph_loss_accuracy/FCNN_200_loss.png)                 |
+| ![](img/graph_loss_accuracy/FCNN_256_accuracy.png)                 | ![](img/graph_loss_accuracy/FCNN_256_loss.png)                 |
+| ![](img/graph_loss_accuracy/FCNN_300_accuracy.png)                 | ![](img/graph_loss_accuracy/FCNN_300_loss.png)                 |
+| ![](img/graph_loss_accuracy/FCNN_512_accuracy.png)                 | ![](img/graph_loss_accuracy/FCNN_512_loss.png)                 |
+| ![](img/graph_loss_accuracy/FCNN_768_accuracy.png)                 | ![](img/graph_loss_accuracy/FCNN_768_loss.png)                 |
+| ![](img/graph_loss_accuracy/FCNN_1024_accuracy.png)                | ![](img/graph_loss_accuracy/FCNN_1024_loss.png)                |
+| ![](img/graph_loss_accuracy/FCNN_1536_accuracy.png)                | ![](img/graph_loss_accuracy/FCNN_1536_loss.png)                |
+| ![](img/graph_loss_accuracy/FCNN_2048_accuracy.png)                | ![](img/graph_loss_accuracy/FCNN_2048_loss.png)                |
+| ![](img/graph_loss_accuracy/FCNN_2304_accuracy.png)                | ![](img/graph_loss_accuracy/FCNN_2304_loss.png)                |
+| ![](img/graph_loss_accuracy/FCNN_768_384_accuracy.png)             | ![](img/graph_loss_accuracy/FCNN_768_384_loss.png)             |
+| ![](img/graph_loss_accuracy/FCNN_1024_512_accuracy.png)            | ![](img/graph_loss_accuracy/FCNN_1024_512_loss.png)            |
+| ![](img/graph_loss_accuracy/FCNN_1536_768_accuracy.png)            | ![](img/graph_loss_accuracy/FCNN_1536_768_loss.png)            |
+| ![](img/graph_loss_accuracy/FCNN_2304_768_accuracy.png)            | ![](img/graph_loss_accuracy/FCNN_2304_768_loss.png)            |
+| ![](img/graph_loss_accuracy/FCNN_768_384_96_accuracy.png)          | ![](img/graph_loss_accuracy/FCNN_768_384_96_loss.png)          |
+| ![](img/graph_loss_accuracy/FCNN_768_384_192_accuracy.png)         | ![](img/graph_loss_accuracy/FCNN_768_384_192_loss.png)         |
+| ![](img/graph_loss_accuracy/FCNN_2048_1024_512_256_accuracy.png)   | ![](img/graph_loss_accuracy/FCNN_2048_1024_512_256_loss.png)   |
+| ![](img/graph_loss_accuracy/FCNN_1536_768_384_192_96_accuracy.png) | ![](img/graph_loss_accuracy/FCNN_1536_768_384_192_96_loss.png) |
 
 [comment]: # (graph_table_end)
 

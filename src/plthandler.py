@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
+from keras.utils import plot_model
+
+
 def convert_to_grid(data, number_examples, type):
     if type == 'gray':
         data = data[:number_examples, :, :, 0]
@@ -64,7 +67,7 @@ def save_accuracy_graph(log, model_name, save_folder_graphs):
 
     # plt.show()
     filename = model_name + '_accuracy' + '.png'
-    path = os.path.join(save_folder_graphs, filename)
+    path = os.path.join(save_folder_graphs, 'graph_loss_accuracy', filename)
     fig.savefig(path)
     plt.close()
 
@@ -85,6 +88,12 @@ def save_loss_graph(log, model_name, save_folder_graphs):
 
     # plt.show()
     filename = model_name + '_loss' + '.png'
-    path = os.path.join(save_folder_graphs, filename)
+    path = os.path.join(save_folder_graphs, 'graph_loss_accuracy', filename)
     fig.savefig(path)
     plt.close()
+
+
+def save_model_graph(model, model_name, save_folder_graphs):
+    filename = model_name + '_model' + '.png'
+    path = os.path.join(save_folder_graphs, 'graph_model', filename)
+    plot_model(model, to_file=path, show_shapes=True, dpi=200)

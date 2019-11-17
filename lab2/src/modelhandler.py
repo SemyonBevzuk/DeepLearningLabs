@@ -80,6 +80,7 @@ def fit_and_save_model(data, params, save_folder_model, save_folder_log, save_fo
 
     ph.save_accuracy_graph(log, model_name, save_folder_graphs)
     ph.save_loss_graph(log, model_name, save_folder_graphs)
+    ph.save_model_graph(model, model_name, save_folder_graphs)
 
 
 def print_model_info(model, save_folder_log):
