@@ -39,50 +39,61 @@ def run_serial_data2():
         [
             {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
             {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.5},
             {'name': 'Flatten'},
             {'name': 'Dense', 'units': 300}
         ],
         [
             {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
             {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.5},
             {'name': 'Flatten'},
             {'name': 'Dense', 'units': 300}
         ],
         [
             {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
             {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.4},
             {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.4},
             {'name': 'Flatten'},
             {'name': 'Dense', 'units': 300}
         ],
         [
             {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
             {'name': 'Flatten'},
             {'name': 'Dense', 'units': 300}
         ],
         [
             {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
             {'name': 'Flatten'},
             {'name': 'Dense', 'units': 500}
         ],
         [
             {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
             {'name': 'Flatten'},
             {'name': 'Dense', 'units': 300}
         ],
         [
             {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
             {'name': 'Flatten'},
             {'name': 'Dense', 'units': 128}
         ]

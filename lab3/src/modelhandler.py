@@ -5,7 +5,7 @@ import plthandler as ph
 
 from datetime import datetime
 from keras.models import Model, load_model
-from keras.layers import Input, Conv2D, MaxPool2D, Flatten, Dense
+from keras.layers import Input, Conv2D, MaxPool2D, Flatten, Dense, Dropout
 from keras import Sequential
 
 import json
@@ -27,6 +27,8 @@ def get_model_name(model):
             filename += '_' + str(config['pool_size'][0]) + 'x' + str(config['pool_size'][1])
         elif layer_type == 'dense':
             filename += '_' + str(config['units'])
+        elif layer_type == 'dropout':
+            filename += '_' + str(config['rate'])
 
     return filename
 
@@ -55,6 +57,8 @@ def fit_model(data, params):
             model.add(Flatten())
         if layer['name'] == 'Dense':
             model.add(Dense(units=layer['units'], kernel_initializer='he_normal'))
+        if layer['name'] == 'Dropout':
+            model.add(Dropout(rate=layer['rate']))
     model.add(Dense(units=y_train.shape[1], activation='softmax', kernel_initializer='he_normal'))
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
