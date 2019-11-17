@@ -1,26 +1,5 @@
 # Лабораторная работа №2
 
-|           Model name           |                       Model graph                       |
-| :----------------------------- | :------------------------------------------------------ |
-| FCNN_128_model                 | ![](img/graph_model/FCNN_128_model.png)                 |
-| FCNN_200_model                 | ![](img/graph_model/FCNN_200_model.png)                 |
-| FCNN_256_model                 | ![](img/graph_model/FCNN_256_model.png)                 |
-| FCNN_300_model                 | ![](img/graph_model/FCNN_300_model.png)                 |
-| FCNN_512_model                 | ![](img/graph_model/FCNN_512_model.png)                 |
-| FCNN_768_model                 | ![](img/graph_model/FCNN_768_model.png)                 |
-| FCNN_1024_model                | ![](img/graph_model/FCNN_1024_model.png)                |
-| FCNN_1536_model                | ![](img/graph_model/FCNN_1536_model.png)                |
-| FCNN_2048_model                | ![](img/graph_model/FCNN_2048_model.png)                |
-| FCNN_2304_model                | ![](img/graph_model/FCNN_2304_model.png)                |
-| FCNN_768_384_model             | ![](img/graph_model/FCNN_768_384_model.png)             |
-| FCNN_1024_512_model            | ![](img/graph_model/FCNN_1024_512_model.png)            |
-| FCNN_1536_768_model            | ![](img/graph_model/FCNN_1536_768_model.png)            |
-| FCNN_2304_768_model            | ![](img/graph_model/FCNN_2304_768_model.png)            |
-| FCNN_768_384_96_model          | ![](img/graph_model/FCNN_768_384_96_model.png)          |
-| FCNN_768_384_192_model         | ![](img/graph_model/FCNN_768_384_192_model.png)         |
-| FCNN_2048_1024_512_256_model   | ![](img/graph_model/FCNN_2048_1024_512_256_model.png)   |
-| FCNN_1536_768_384_192_96_model | ![](img/graph_model/FCNN_1536_768_384_192_96_model.png) |
-
 Реализация полносвязной нейронной сети для задачи классификации.
 
 Сравнение конфигураций полносвязных нейронных сетей.
@@ -46,6 +25,33 @@
 ### notebook.py
 Является точкой входа. Блокнот для проведения экспериментов. Содержит метод для запуска серийного эксперимента с 
 возможностью вариации количества скрытых слоёв и числа нейронов на них.
+
+## Структура сетей
+
+[comment]: # (graph_model_table_start)
+
+|           Model name           |                       Model graph                       |
+| :----------------------------- | :------------------------------------------------------ |
+| FCNN_128_model                 | ![](img/graph_model/FCNN_128_model.png)                 |
+| FCNN_200_model                 | ![](img/graph_model/FCNN_200_model.png)                 |
+| FCNN_256_model                 | ![](img/graph_model/FCNN_256_model.png)                 |
+| FCNN_300_model                 | ![](img/graph_model/FCNN_300_model.png)                 |
+| FCNN_512_model                 | ![](img/graph_model/FCNN_512_model.png)                 |
+| FCNN_768_model                 | ![](img/graph_model/FCNN_768_model.png)                 |
+| FCNN_1024_model                | ![](img/graph_model/FCNN_1024_model.png)                |
+| FCNN_1536_model                | ![](img/graph_model/FCNN_1536_model.png)                |
+| FCNN_2048_model                | ![](img/graph_model/FCNN_2048_model.png)                |
+| FCNN_2304_model                | ![](img/graph_model/FCNN_2304_model.png)                |
+| FCNN_768_384_model             | ![](img/graph_model/FCNN_768_384_model.png)             |
+| FCNN_1024_512_model            | ![](img/graph_model/FCNN_1024_512_model.png)            |
+| FCNN_1536_768_model            | ![](img/graph_model/FCNN_1536_768_model.png)            |
+| FCNN_2304_768_model            | ![](img/graph_model/FCNN_2304_768_model.png)            |
+| FCNN_768_384_96_model          | ![](img/graph_model/FCNN_768_384_96_model.png)          |
+| FCNN_768_384_192_model         | ![](img/graph_model/FCNN_768_384_192_model.png)         |
+| FCNN_2048_1024_512_256_model   | ![](img/graph_model/FCNN_2048_1024_512_256_model.png)   |
+| FCNN_1536_768_384_192_96_model | ![](img/graph_model/FCNN_1536_768_384_192_96_model.png) |
+
+[comment]: # (graph_model_table_end)
 
 ## Численные эксперименты
 ### Параметры
