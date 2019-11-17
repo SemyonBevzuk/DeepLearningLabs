@@ -31,19 +31,29 @@
 ### Результаты
 [comment]: # (result_table_start)
 
-|                                      Model name                                       | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
-| :------------------------------------------------------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300 |    0.0525     |  4.0882   |     0.0349     |   4.1245   |     0.8096     |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300 |     0.084     |  5.1848   |     0.0343     |   5.1334   |     0.8156     |
+|                                                      Model name                                                       | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
+| :-------------------------------------------------------------------------------------------------------------------- | :-----------: | :-------: | :------------: | :--------: | :------------: |
+| CNN_conv2d_16_3x3_max_pooling2d_2x2_flatten_dense_300                                                                 |    0.8746     |  0.7346   |     0.9817     |   0.0751   |    248.1095    |
+| CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_128                                                                 |    0.8607     |  0.8779   |     0.9722     |   0.1015   |    289.3085    |
+| CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300                                                                 |    0.8604     |  0.8973   |     0.9718     |   0.1106   |    424.3355    |
+| CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_500                                                                 |    0.8684     |  0.9368   |     0.9765     |   0.1093   |    582.2546    |
+| CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300                                 |    0.9013     |  0.5742   |     0.9925     |   0.0282   |    335.5144    |
+| CNN_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300                                 |     0.921     |  0.3852   |     0.995      |   0.0201   |    565.3414    |
+| CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300 |    0.8849     |  0.6501   |     0.9894     |   0.0337   |    357.0304    |
 
 [comment]: # (result_table_end)
 
 [comment]: # (graph_table_start)
 
-|                                                  Accuracy                                                   |                                                  Loss                                                   |
-| :---------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------ |
-| ![](img/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png) | ![](img/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png) |
-| ![](img/CNN_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png) | ![](img/CNN_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png) |
+|                                                                  Accuracy                                                                   |                                                                  Loss                                                                   |
+| :------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------- |
+| ![](img/CNN_conv2d_16_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png)                                                                 | ![](img/CNN_conv2d_16_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png)                                                                 |
+| ![](img/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_128_accuracy.png)                                                                 | ![](img/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_128_loss.png)                                                                 |
+| ![](img/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png)                                                                 | ![](img/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png)                                                                 |
+| ![](img/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_500_accuracy.png)                                                                 | ![](img/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_500_loss.png)                                                                 |
+| ![](img/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png)                                 | ![](img/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png)                                 |
+| ![](img/CNN_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png)                                 | ![](img/CNN_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png)                                 |
+| ![](img/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png) | ![](img/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png) |
 
 [comment]: # (graph_table_end)
 
