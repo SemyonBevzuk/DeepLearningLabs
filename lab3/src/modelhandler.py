@@ -64,7 +64,7 @@ def fit_model(data, params):
 
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     log = model.fit(x_train, y_train, batch_size=params['batch_size'], epochs=params['num_epochs'],
-                    validation_data=(data['x_test'], data['y_test']]), shuffle=True, verbose=2)
+                    validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=2)
     return (model, log)
 
 

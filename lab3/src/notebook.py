@@ -69,6 +69,9 @@ def run_serial_data2():
             {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
             {'name': 'Dropout', 'rate': 0.4},
+            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.4},
             {'name': 'Flatten'},
             {'name': 'Dense', 'units': 300}
         ],
@@ -122,6 +125,18 @@ def run_serial_data2():
             {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
             {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Flatten'},
+            {'name': 'Dense', 'units': 300}
+        ],
+        [
+            {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
             {'name': 'Flatten'},
             {'name': 'Dense', 'units': 300}
@@ -166,7 +181,7 @@ def main():
     rh.add_graph_table_to_report(report_path, save_folder_img)
     rh.add_graph_model_table_to_report(report_path, save_folder_img)
 
-    #mh.show_all_models(save_folder_model, save_folder_log)
+    mh.show_all_models(save_folder_model, save_folder_log)
 
 
 if __name__ == "__main__":
