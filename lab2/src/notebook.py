@@ -22,15 +22,6 @@ def run_serial_experiment(data, series_parameters, all_configurations):
         series_parameters['layers'] = current_configuration['layers']
         mh.fit_and_save_model(data, series_parameters, save_folder_model, save_folder_log, save_folder_graphs)
 
-    models = []
-    for elem in all_configurations:
-        model_name = 'FCNN'
-        for l in elem:
-            model_name += '_' + str(l)
-        model_name += '.h5'
-        models.append(model_name)
-    mh.show_models(save_folder_model, models, save_folder_log)
-
 
 def run_serial_data2():
     filename = 'data2.pickle'
@@ -41,6 +32,22 @@ def run_serial_data2():
                          'num_epochs': 10}
 
     all_configurations = [
+        dict(label='FCNN_1_relu', layers=[
+            {'units': 128, 'activation': 'relu'}
+        ]),
+        dict(label='FCNN_2_relu', layers=[
+            {'units': 256, 'activation': 'relu'}
+        ]),
+        dict(label='FCNN_3_relu', layers=[
+            {'units': 512, 'activation': 'relu'}
+        ]),
+        dict(label='FCNN_4_relu', layers=[
+            {'units': 1024, 'activation': 'relu'}
+        ]),
+        dict(label='FCNN_5_relu', layers=[
+            {'units': 1024, 'activation': 'relu'},
+            {'units': 512, 'activation': 'relu'}
+        ]),
         dict(label='FCNN_6_relu', layers=[
             {'units': 1024, 'activation': 'relu'},
             {'units': 512, 'activation': 'relu'},
