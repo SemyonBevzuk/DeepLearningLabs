@@ -60,7 +60,6 @@ def fit_model(data, params):
         if layer['name'] == 'Dropout':
             model.add(Dropout(rate=layer['rate']))
     model.add(Dense(units=y_train.shape[1], activation='softmax', kernel_initializer='he_normal'))
-    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     log = model.fit(x_train, y_train, batch_size=params['batch_size'], epochs=params['num_epochs'],

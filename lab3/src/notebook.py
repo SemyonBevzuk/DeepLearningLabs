@@ -38,7 +38,7 @@ def run_serial_data2():
     dh.print_data_information(data)
     params = {'batch_size': 128,
               'num_epochs': 5}
-    all_layers = [
+    all_configurations = [
         [
             {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
             {'name': 'MaxPool2D', 'pool_size': 2},
@@ -166,7 +166,7 @@ def run_serial_data2():
             {'name': 'Dense', 'units': 128}
         ]
     ]
-    run_serial_experiment(data, params, all_layers)
+    run_serial_experiment(data, params, all_configurations)
 
 
 def main():
