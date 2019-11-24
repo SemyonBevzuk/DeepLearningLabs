@@ -12,29 +12,8 @@ from keras.layers import Input, Conv2D, MaxPool2D, Flatten, Dense, Dropout
 from keras import Sequential
 
 
-def get_model_name(model):
-    filename = 'CNN'
-    layers = model.layers
-    for layer in layers[:-1]:
-        config = layer.get_config()
-        layer_type = re.match(r'((\w+_)+)', config['name'])[0][:-1]
-        # print(config['name'].split('_')[0])
-        filename += '_' + layer_type
-        if layer_type == 'conv2d':
-            filename += '_' + str(config['filters']) + '_' + \
-                        str(config['kernel_size'][0]) + 'x' + str(config['kernel_size'][1])
-        elif layer_type == 'max_pooling2d':
-            filename += '_' + str(config['pool_size'][0]) + 'x' + str(config['pool_size'][1])
-        elif layer_type == 'dense':
-            filename += '_' + str(config['units'])
-        elif layer_type == 'dropout':
-            filename += '_' + str(config['rate'])
-
-    return filename
-
-
 def save_model(model, save_folder):
-    filename = get_model_name(model) + '.h5'
+    filename = model.name + '.h5'
     path = os.path.join(save_folder, filename)
     model.save(path)
 
@@ -45,21 +24,25 @@ def fit_model(data, params):
 
     model = Sequential()
     model.add(Conv2D(filters=params['layers'][0]['filters'], kernel_size=params['layers'][0]['kernel_size'],
-                     padding=params['layers'][0]['padding'], activation='relu', kernel_initializer='he_normal',
+                     padding=params['layers'][0]['padding'], activation=params['layers'][0]['activation'],
+                     kernel_initializer='he_normal', name=params['layers'][0]['activation']+'_1',
                      input_shape=(data['x_train'].shape[1], data['x_train'].shape[2], data['x_train'].shape[3])))
-    for layer in params['layers'][1:]:
+    for id, layer in enumerate(params['layers'][1:]):
         if layer['name'] == 'Conv2D':
             model.add(Conv2D(filters=layer['filters'], kernel_size=layer['kernel_size'],
-                             padding=layer['padding'], activation='relu', kernel_initializer='he_normal'))
+                             padding=layer['padding'], activation=layer['activation'],
+                             name=layer['activation']+'_'+str(id+2), kernel_initializer='he_normal'))
         if layer['name'] == 'MaxPool2D':
-            model.add(MaxPool2D(pool_size=layer['pool_size']))
+            model.add(MaxPool2D(pool_size=layer['pool_size'], name=str(id+2)))
         if layer['name'] == 'Flatten':
-            model.add(Flatten())
+            model.add(Flatten(name=str(id+2)))
         if layer['name'] == 'Dense':
-            model.add(Dense(units=layer['units'], kernel_initializer='he_normal'))
+            model.add(Dense(units=layer['units'], activation=layer['activation'],
+                            name=layer['activation']+'_'+str(id+2), kernel_initializer='he_normal'))
         if layer['name'] == 'Dropout':
-            model.add(Dropout(rate=layer['rate']))
+            model.add(Dropout(rate=layer['rate'], name=str(id+2)))
     model.add(Dense(units=y_train.shape[1], activation='softmax', kernel_initializer='he_normal'))
+    model.name = params['label']
 
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     log = model.fit(x_train, y_train, batch_size=params['batch_size'], epochs=params['num_epochs'],
@@ -87,7 +70,7 @@ def fit_and_save_model(data, params, save_folder_model, save_folder_log, save_fo
 
     save_model(model, save_folder_model)
 
-    model_name = get_model_name(model)
+    model_name = model.name
     filename = model_name + '.json'
     with open(os.path.join(save_folder_log, filename), 'w', encoding='utf-8') as file:
         json.dump(model_info, file)
@@ -99,7 +82,7 @@ def fit_and_save_model(data, params, save_folder_model, save_folder_log, save_fo
 
 
 def print_model_info(model, save_folder_log):
-    filename = get_model_name(model) + '.json'
+    filename = model.name + '.json'
     with open(os.path.join(save_folder_log, filename), 'r') as read_file:
         model_info = json.load(read_file)
     print(' Parameters:')

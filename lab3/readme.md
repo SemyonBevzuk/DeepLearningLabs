@@ -29,22 +29,26 @@
 
 [comment]: # (graph_model_table_start)
 
-|                                                                          Model name                                                                          |                                                                                      Model graph                                                                                      |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_flatten_dense_300_model                                                                                                  | ![](img/graph_model/CNN_conv2d_16_3x3_max_pooling2d_2x2_flatten_dense_300_model.png)                                                                                                  |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_128_model                                                                                                  | ![](img/graph_model/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_128_model.png)                                                                                                  |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_model                                                                                                  | ![](img/graph_model/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_model.png)                                                                                                  |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_500_model                                                                                                  | ![](img/graph_model/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_500_model.png)                                                                                                  |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_300_model                                                                                      | ![](img/graph_model/CNN_conv2d_16_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_300_model.png)                                                                                      |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_128_model                                                                                      | ![](img/graph_model/CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_128_model.png)                                                                                      |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_300_model                                                                                      | ![](img/graph_model/CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_300_model.png)                                                                                      |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_500_model                                                                                      | ![](img/graph_model/CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_500_model.png)                                                                                      |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_model                                                                  | ![](img/graph_model/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_model.png)                                                                  |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_model                                                                  | ![](img/graph_model/CNN_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_model.png)                                                                  |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_dropout_0.2_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.5_flatten_dense_300_model                                          | ![](img/graph_model/CNN_conv2d_16_3x3_max_pooling2d_2x2_dropout_0.2_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.5_flatten_dense_300_model.png)                                          |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_conv2d_64_3x3_max_pooling2d_2x2_dropout_0.5_flatten_dense_300_model                                          | ![](img/graph_model/CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_conv2d_64_3x3_max_pooling2d_2x2_dropout_0.5_flatten_dense_300_model.png)                                          |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_model                                  | ![](img/graph_model/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_model.png)                                  |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_conv2d_128_3x3_max_pooling2d_2x2_flatten_dense_300_model | ![](img/graph_model/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_conv2d_128_3x3_max_pooling2d_2x2_flatten_dense_300_model.png) |
+|         Model name          |                     Model graph                      |
+| :-------------------------- | :--------------------------------------------------- |
+| CNN_1_elu_model             | ![](img/graph_model/CNN_1_elu_model.png)             |
+| CNN_1_relu_model            | ![](img/graph_model/CNN_1_relu_model.png)            |
+| CNN_1_sigmoid_model         | ![](img/graph_model/CNN_1_sigmoid_model.png)         |
+| CNN_2_elu_dropout_model     | ![](img/graph_model/CNN_2_elu_dropout_model.png)     |
+| CNN_2_relu_dropout_model    | ![](img/graph_model/CNN_2_relu_dropout_model.png)    |
+| CNN_2_sigmoid_dropout_model | ![](img/graph_model/CNN_2_sigmoid_dropout_model.png) |
+| CNN_3_elu_model             | ![](img/graph_model/CNN_3_elu_model.png)             |
+| CNN_3_relu_model            | ![](img/graph_model/CNN_3_relu_model.png)            |
+| CNN_3_sigmoid_model         | ![](img/graph_model/CNN_3_sigmoid_model.png)         |
+| CNN_4_elu_dropout_model     | ![](img/graph_model/CNN_4_elu_dropout_model.png)     |
+| CNN_4_relu_dropout_model    | ![](img/graph_model/CNN_4_relu_dropout_model.png)    |
+| CNN_4_sigmoid_dropout_model | ![](img/graph_model/CNN_4_sigmoid_dropout_model.png) |
+| CNN_5_elu_model             | ![](img/graph_model/CNN_5_elu_model.png)             |
+| CNN_5_relu_model            | ![](img/graph_model/CNN_5_relu_model.png)            |
+| CNN_5_sigmoid_model         | ![](img/graph_model/CNN_5_sigmoid_model.png)         |
+| CNN_6_elu_dropout_model     | ![](img/graph_model/CNN_6_elu_dropout_model.png)     |
+| CNN_6_relu_dropout_model    | ![](img/graph_model/CNN_6_relu_dropout_model.png)    |
+| CNN_6_sigmoid_dropout_model | ![](img/graph_model/CNN_6_sigmoid_dropout_model.png) |
 
 [comment]: # (graph_model_table_end)
 
@@ -54,44 +58,51 @@
 ### Результаты
 [comment]: # (result_table_start)
 
-|                                                                                               Model name                                                                                               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------: | :-------: | :------------: | :--------: | :------------: |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_flatten_dense_300                                                                                                                                                  |    0.8489     |  0.9367   |     0.9773     |   0.0868   |    251.6053    |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_128                                                                                                                                                  |    0.8705     |  0.7976   |     0.9814     |   0.0719   |    293.2608    |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300                                                                                                                                                  |    0.8714     |  0.7749   |     0.9761     |   0.0944   |    433.9981    |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_500                                                                                                                                                  |    0.8647     |  0.9279   |     0.9775     |    0.09    |    582.9919    |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_300                                                                                                                                      |    0.8644     |  0.7428   |     0.9787     |   0.0937   |    268.1841    |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_128                                                                                                                                      |    0.8671     |  0.8147   |     0.9796     |   0.0859   |    328.8819    |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_300                                                                                                                                      |     0.869     |  0.8587   |     0.9825     |   0.0746   |    468.0969    |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_500                                                                                                                                      |     0.864     |  0.8862   |     0.9788     |   0.0942   |    621.7271    |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300                                                                                                                  |    0.9023     |  0.4662   |     0.989      |   0.0389   |    324.8156    |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300                                                                                                                  |    0.9171     |  0.4545   |     0.9936     |   0.0231   |    552.5494    |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_dropout_0.2_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.5_flatten_dense_300                                                                                          |    0.8955     |  0.3599   |     0.9808     |   0.0845   |    351.4733    |
-| CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_conv2d_64_3x3_max_pooling2d_2x2_dropout_0.5_flatten_dense_300                                                                                          |    0.9223     |  0.2945   |     0.9949     |   0.0282   |    601.2562    |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300                                                                                  |    0.8933     |  0.5679   |     0.9905     |   0.0315   |    361.1749    |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_conv2d_128_3x3_max_pooling2d_2x2_flatten_dense_300                                                 |    0.8694     |  0.6924   |     0.9899     |   0.0329   |    386.0955    |
-| CNN_conv2d_16_3x3_max_pooling2d_2x2_dropout_0.2_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.4_conv2d_64_3x3_max_pooling2d_2x2_dropout_0.4_conv2d_128_3x3_max_pooling2d_2x2_dropout_0.4_flatten_dense_300 |    0.7755     |  0.6814   |     0.9232     |   0.2876   |    413.517     |
+|      Model name       | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
+| :-------------------- | :-----------: | :-------: | :------------: | :--------: | :------------: |
+| CNN_1_elu             |    0.8801     |  1.1476   |     0.9959     |   0.0174   |    800.8384    |
+| CNN_3_elu             |    0.9094     |  0.8882   |     0.9957     |   0.0247   |   1101.1085    |
+| CNN_5_elu             |    0.8951     |  0.8769   |     0.9923     |   0.0241   |    790.2303    |
+| CNN_1_relu            |    0.8823     |  0.7741   |     0.9941     |   0.0216   |    781.0184    |
+| CNN_3_relu            |    0.9111     |  0.5632   |     0.9938     |   0.0234   |   1066.1482    |
+| CNN_5_relu            |    0.8727     |  0.8005   |     0.9923     |   0.0218   |    766.4206    |
+| CNN_1_sigmoid         |     0.808     |  0.7678   |     0.8956     |   0.3995   |    801.3745    |
+| CNN_3_sigmoid         |    0.8924     |   0.389   |     0.9964     |   0.0232   |   1081.7477    |
+| CNN_5_sigmoid         |    0.8122     |  0.7203   |     0.9884     |   0.0547   |    771.3893    |
+| CNN_2_elu_dropout     |    0.8831     |  1.1037   |     0.9954     |   0.0156   |    875.3395    |
+| CNN_4_elu_dropout     |    0.9139     |  0.5692   |     0.9963     |   0.0129   |   1213.8117    |
+| CNN_6_elu_dropout     |    0.8962     |  0.5066   |     0.997      |   0.0117   |    844.8452    |
+| CNN_2_relu_dropout    |     0.88      |  0.7938   |     0.9897     |   0.036    |    856.6438    |
+| CNN_4_relu_dropout    |    0.9196     |  0.3463   |     0.9985     |   0.0096   |   1171.3076    |
+| CNN_6_relu_dropout    |    0.8645     |  0.5494   |     0.9946     |   0.0244   |    834.5455    |
+| CNN_2_sigmoid_dropout |    0.3833     |  1.8429   |     0.4341     |   1.8047   |    864.0562    |
+| CNN_4_sigmoid_dropout |    0.8178     |  0.5992   |     0.9821     |   0.0804   |   1190.1844    |
+| CNN_6_sigmoid_dropout |    0.6344     |  1.2289   |     0.9238     |   0.2938   |    827.8438    |
 
 [comment]: # (result_table_end)
 
 [comment]: # (graph_table_start)
 
-|                                                                                             Accuracy                                                                                             |                                                                                             Loss                                                                                             |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![](img/graph_loss_accuracy/CNN_conv2d_16_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png)                                                                                                  | ![](img/graph_loss_accuracy/CNN_conv2d_16_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png)                                                                                                  |
-| ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_128_accuracy.png)                                                                                                  | ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_128_loss.png)                                                                                                  |
-| ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png)                                                                                                  | ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png)                                                                                                  |
-| ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_500_accuracy.png)                                                                                                  | ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_500_loss.png)                                                                                                  |
-| ![](img/graph_loss_accuracy/CNN_conv2d_16_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_300_accuracy.png)                                                                                      | ![](img/graph_loss_accuracy/CNN_conv2d_16_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_300_loss.png)                                                                                      |
-| ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_128_accuracy.png)                                                                                      | ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_128_loss.png)                                                                                      |
-| ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_300_accuracy.png)                                                                                      | ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_300_loss.png)                                                                                      |
-| ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_500_accuracy.png)                                                                                      | ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_flatten_dense_500_loss.png)                                                                                      |
-| ![](img/graph_loss_accuracy/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png)                                                                  | ![](img/graph_loss_accuracy/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png)                                                                  |
-| ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png)                                                                  | ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png)                                                                  |
-| ![](img/graph_loss_accuracy/CNN_conv2d_16_3x3_max_pooling2d_2x2_dropout_0.2_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.5_flatten_dense_300_accuracy.png)                                          | ![](img/graph_loss_accuracy/CNN_conv2d_16_3x3_max_pooling2d_2x2_dropout_0.2_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.5_flatten_dense_300_loss.png)                                          |
-| ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_conv2d_64_3x3_max_pooling2d_2x2_dropout_0.5_flatten_dense_300_accuracy.png)                                          | ![](img/graph_loss_accuracy/CNN_conv2d_32_3x3_max_pooling2d_2x2_dropout_0.2_conv2d_64_3x3_max_pooling2d_2x2_dropout_0.5_flatten_dense_300_loss.png)                                          |
-| ![](img/graph_loss_accuracy/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png)                                  | ![](img/graph_loss_accuracy/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png)                                  |
-| ![](img/graph_loss_accuracy/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_conv2d_128_3x3_max_pooling2d_2x2_flatten_dense_300_accuracy.png) | ![](img/graph_loss_accuracy/CNN_conv2d_16_3x3_max_pooling2d_2x2_conv2d_32_3x3_max_pooling2d_2x2_conv2d_64_3x3_max_pooling2d_2x2_conv2d_128_3x3_max_pooling2d_2x2_flatten_dense_300_loss.png) |
+|                            Accuracy                             |                            Loss                             |
+| :-------------------------------------------------------------- | :---------------------------------------------------------- |
+| ![](img/graph_loss_accuracy/CNN_1_elu_accuracy.png)             | ![](img/graph_loss_accuracy/CNN_1_elu_loss.png)             |
+| ![](img/graph_loss_accuracy/CNN_1_relu_accuracy.png)            | ![](img/graph_loss_accuracy/CNN_1_relu_loss.png)            |
+| ![](img/graph_loss_accuracy/CNN_1_sigmoid_accuracy.png)         | ![](img/graph_loss_accuracy/CNN_1_sigmoid_loss.png)         |
+| ![](img/graph_loss_accuracy/CNN_2_elu_dropout_accuracy.png)     | ![](img/graph_loss_accuracy/CNN_2_elu_dropout_loss.png)     |
+| ![](img/graph_loss_accuracy/CNN_2_relu_dropout_accuracy.png)    | ![](img/graph_loss_accuracy/CNN_2_relu_dropout_loss.png)    |
+| ![](img/graph_loss_accuracy/CNN_2_sigmoid_dropout_accuracy.png) | ![](img/graph_loss_accuracy/CNN_2_sigmoid_dropout_loss.png) |
+| ![](img/graph_loss_accuracy/CNN_3_elu_accuracy.png)             | ![](img/graph_loss_accuracy/CNN_3_elu_loss.png)             |
+| ![](img/graph_loss_accuracy/CNN_3_relu_accuracy.png)            | ![](img/graph_loss_accuracy/CNN_3_relu_loss.png)            |
+| ![](img/graph_loss_accuracy/CNN_3_sigmoid_accuracy.png)         | ![](img/graph_loss_accuracy/CNN_3_sigmoid_loss.png)         |
+| ![](img/graph_loss_accuracy/CNN_4_elu_dropout_accuracy.png)     | ![](img/graph_loss_accuracy/CNN_4_elu_dropout_loss.png)     |
+| ![](img/graph_loss_accuracy/CNN_4_relu_dropout_accuracy.png)    | ![](img/graph_loss_accuracy/CNN_4_relu_dropout_loss.png)    |
+| ![](img/graph_loss_accuracy/CNN_4_sigmoid_dropout_accuracy.png) | ![](img/graph_loss_accuracy/CNN_4_sigmoid_dropout_loss.png) |
+| ![](img/graph_loss_accuracy/CNN_5_elu_accuracy.png)             | ![](img/graph_loss_accuracy/CNN_5_elu_loss.png)             |
+| ![](img/graph_loss_accuracy/CNN_5_relu_accuracy.png)            | ![](img/graph_loss_accuracy/CNN_5_relu_loss.png)            |
+| ![](img/graph_loss_accuracy/CNN_5_sigmoid_accuracy.png)         | ![](img/graph_loss_accuracy/CNN_5_sigmoid_loss.png)         |
+| ![](img/graph_loss_accuracy/CNN_6_elu_dropout_accuracy.png)     | ![](img/graph_loss_accuracy/CNN_6_elu_dropout_loss.png)     |
+| ![](img/graph_loss_accuracy/CNN_6_relu_dropout_accuracy.png)    | ![](img/graph_loss_accuracy/CNN_6_relu_dropout_loss.png)    |
+| ![](img/graph_loss_accuracy/CNN_6_sigmoid_dropout_accuracy.png) | ![](img/graph_loss_accuracy/CNN_6_sigmoid_dropout_loss.png) |
 
 [comment]: # (graph_table_end)
 

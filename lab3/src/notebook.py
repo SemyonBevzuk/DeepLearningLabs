@@ -15,20 +15,16 @@ import plthandler as ph
 import reporthandler as rh
 
 
-def run_serial_experiment(data, params, all_layers):
+def run_serial_experiment(data, series_parameters, all_configurations):
     save_folder_model = os.path.join('..', 'models')
     save_folder_log = os.path.join('..', 'log')
     save_folder_graphs = os.path.join('..', 'img')
 
-    models = []
-    for layers in all_layers:
-        print("\n\t !Model: {}".format(layers))
-        params['layers'] = layers
-        model_name = mh.fit_and_save_model(data, params, save_folder_model, save_folder_log, save_folder_graphs)
-        model_name += '.h5'
-        models.append(model_name)
-
-    mh.show_models(save_folder_model, models, save_folder_log)
+    for current_configuration in all_configurations:
+        print("\n\t !Model: {}".format(current_configuration))
+        series_parameters['label'] = current_configuration['label']
+        series_parameters['layers'] = current_configuration['layers']
+        mh.fit_and_save_model(data, series_parameters, save_folder_model, save_folder_log, save_folder_graphs)
 
 
 def run_serial_data2():
@@ -37,126 +33,31 @@ def run_serial_data2():
     data = dh.get_matrix_data(path)
     dh.print_data_information(data)
     params = {'batch_size': 128,
-              'num_epochs': 5}
+              'num_epochs': 10}
     all_configurations = [
-        [
-            {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
+        dict(label='CNN_7_relu', layers=[
+            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Flatten'},
+            {'name': 'Dense', 'units': 512, 'activation': 'relu'}
+        ]),
+        dict(label='CNN_8_relu_dropout', layers=[
+            {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
             {'name': 'MaxPool2D', 'pool_size': 2},
             {'name': 'Dropout', 'rate': 0.2},
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
+            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
+            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
             {'name': 'MaxPool2D', 'pool_size': 2},
             {'name': 'Dropout', 'rate': 0.5},
             {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 300}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Dropout', 'rate': 0.2},
-            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Dropout', 'rate': 0.5},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 300}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Dropout', 'rate': 0.2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 300}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Dropout', 'rate': 0.2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 500}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Dropout', 'rate': 0.2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 300}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Dropout', 'rate': 0.2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 128}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 300}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 300}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 300}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 300}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 300}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 500}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 300}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 128}
-        ],
-        [
-            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 1024}
-        ]
+            {'name': 'Dense', 'units': 512, 'activation': 'relu'}
+        ]),
     ]
     run_serial_experiment(data, params, all_configurations)
 
@@ -173,7 +74,7 @@ def main():
     rh.add_graph_table_to_report(report_path, save_folder_img)
     rh.add_graph_model_table_to_report(report_path, save_folder_img)
 
-    mh.show_all_models(save_folder_model, save_folder_log)
+    #mh.show_all_models(save_folder_model, save_folder_log)
 
 
 if __name__ == "__main__":
