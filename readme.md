@@ -83,7 +83,7 @@
 Наши данные являются сбалансированными, то есть каждому классу соответствует одинаковое число примеров в обучающей выборке.
 Следовательно, мы можем использовать метрику accuracy:
 
-![](https://quicklatex.com/cache3/73/ql_36d403df430d8ad8accc582ce3c7ba73_l3.png)
+![](https://latex.codecogs.com/svg.latex?accuracy&space;=&space;\frac{1}{N}\sum_{i=1}^{N}[Y_i(X_i)&space;=&space;U_i])
 
 Где *Y* - выход сети, *U* - ожидаемый выход, *X* - вход сети.
 
