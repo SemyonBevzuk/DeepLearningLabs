@@ -1,0 +1,1 @@
+{"Parameters": {"batch_size": 128, "num_epochs": 10, "label": "FCNN_5_sigmoid", "layers": [{"units": 1024, "activation": "sigmoid"}, {"units": 512, "activation": "sigmoid"}]}, "Statistics": {"Time_train": 687.235297, "Train_loss": 0.13705868337695762, "Train_accuracy": 0.9630182981491089, "Test_loss": 0.6444207164095398, "Test_accuracy": 0.8417260646820068}}

@@ -5,24 +5,15 @@ import plthandler as ph
 
 from datetime import datetime
 from keras.models import Model, load_model
-from keras.layers import Input, Dense
+from keras.layers import Input, Dense, Dropout, Activation
 from keras import Sequential
 
 import json
 import os
 
 
-def get_model_name(model):
-    filename = 'FCNN'
-    layers = model.layers[1:-1]
-    for layer in layers:
-        config = layer.get_config()
-        filename += '_' + str(config['units'])
-    return filename
-
-
 def save_model(model, save_folder):
-    filename = get_model_name(model) + '.h5'
+    filename = model.name + '.h5'
     path = os.path.join(save_folder, filename)
     model.save(path)
 
@@ -31,21 +22,17 @@ def fit_model(data, params):
     x_train = data['x_train']
     y_train = data['y_train']
 
-    inp = Input(shape=(x_train.shape[1],))  # Our input is a 1D vector of size 32*32*3
+
+    inp = Input(shape=(x_train.shape[1],), name='Input')  # Our input is a 1D vector of size 32*32*3
     hidden_layer_prev = inp
-    for hidden_layer_size in params['hidden_layer_sizes']:
-        hidden_layer_prev = Dense(hidden_layer_size, activation='relu', kernel_initializer='he_normal', )(
-            hidden_layer_prev)
-    out = Dense(y_train.shape[1], activation='softmax', kernel_initializer='he_normal', )(
-        hidden_layer_prev)  # Output softmax layer
-    model = Model(inputs=inp, outputs=out)  # To define a model, just specify its input and output layers
-    '''
-    model = Sequential()
-    model.add(Dense(x_train.shape[1], activation='relu', kernel_initializer='he_normal', ))
-    for hidden_layer_size in params['hidden_layer_sizes']:
-        model.add(Dense(hidden_layer_size, activation='relu', kernel_initializer='he_normal', ))
-    model.add(Dense(y_train.shape[1], activation='softmax', kernel_initializer='he_normal', ))
-    '''
+    for id, layer in enumerate(params['layers']):
+        hidden_layer_prev = Dense(layer['units'], activation=layer['activation'], kernel_initializer='he_normal',
+                                  name=layer['activation']+'_'+str(id+1))(hidden_layer_prev)
+    out = Dense(y_train.shape[1], activation='softmax', kernel_initializer='he_normal',
+                name='softmax')(hidden_layer_prev)
+    model = Model(inputs=inp, outputs=out)
+    model.name = params['label']
+
 
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     log = model.fit(x_train, y_train, batch_size=params['batch_size'], epochs=params['num_epochs'],
@@ -73,7 +60,7 @@ def fit_and_save_model(data, params, save_folder_model, save_folder_log, save_fo
 
     save_model(model, save_folder_model)
 
-    model_name = get_model_name(model)
+    model_name = model.name
     filename = model_name + '.json'
     with open(os.path.join(save_folder_log, filename), 'w', encoding='utf-8') as file:
         json.dump(model_info, file)
@@ -84,7 +71,7 @@ def fit_and_save_model(data, params, save_folder_model, save_folder_log, save_fo
 
 
 def print_model_info(model, save_folder_log):
-    filename = get_model_name(model) + '.json'
+    filename = model.name + '.json'
     with open(os.path.join(save_folder_log, filename), 'r') as read_file:
         model_info = json.load(read_file)
     print(' Parameters:')

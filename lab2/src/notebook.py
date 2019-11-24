@@ -11,20 +11,19 @@ import plthandler as ph
 import reporthandler as rh
 
 
-
-
-def run_serial_experiment(data, params, all_hidden_layer_sizes):
+def run_serial_experiment(data, series_parameters, all_configurations):
     save_folder_model = os.path.join('..', 'models')
     save_folder_log = os.path.join('..', 'log')
     save_folder_graphs = os.path.join('..', 'img')
 
-    for hidden_layer_sizes in all_hidden_layer_sizes:
-        print("\n\t !Model: {}".format(hidden_layer_sizes))
-        params['hidden_layer_sizes'] = hidden_layer_sizes
-        mh.fit_and_save_model(data, params, save_folder_model, save_folder_log, save_folder_graphs)
+    for current_configuration in all_configurations:
+        print("\n\t !Model: {}".format(current_configuration))
+        series_parameters['label'] = current_configuration['label']
+        series_parameters['layers'] = current_configuration['layers']
+        mh.fit_and_save_model(data, series_parameters, save_folder_model, save_folder_log, save_folder_graphs)
 
     models = []
-    for elem in all_hidden_layer_sizes:
+    for elem in all_configurations:
         model_name = 'FCNN'
         for l in elem:
             model_name += '_' + str(l)
@@ -38,32 +37,62 @@ def run_serial_data2():
     path = os.path.join('..', '..', 'data', filename)
     data = dh.get_vector_data(path)
     dh.print_data_information(data)
-    params = {'batch_size': 128,
-              'num_epochs': 15}
-    all_hidden_layer_sizes_1 = [
-        [128],
-        [200],
-        [256],
-        [300],
-        [512],
-        [768],
-        [1024],
-        [1536],
-        [2048],
-        [2304],
-        [768, 384],
-        [1024, 512],
-        [1536, 768],
-        [2304, 768],
-        [768, 384, 192],
-        [768, 384, 96],
-        [2048, 1024, 512, 256],
-        [1536, 768, 384, 192, 96]
+    series_parameters = {'batch_size': 128,
+                         'num_epochs': 10}
+
+    all_configurations = [
+        dict(label='FCNN_6_relu', layers=[
+            {'units': 1024, 'activation': 'relu'},
+            {'units': 512, 'activation': 'relu'},
+            {'units': 256, 'activation': 'relu'}
+        ]),
+
+        dict(label='FCNN_1_elu', layers=[
+            {'units': 128, 'activation': 'elu'}
+        ]),
+        dict(label='FCNN_2_elu', layers=[
+            {'units': 256, 'activation': 'elu'}
+        ]),
+        dict(label='FCNN_3_elu', layers=[
+            {'units': 512, 'activation': 'elu'}
+        ]),
+        dict(label='FCNN_4_elu', layers=[
+            {'units': 1024, 'activation': 'elu'}
+        ]),
+        dict(label='FCNN_5_elu', layers=[
+            {'units': 1024, 'activation': 'elu'},
+            {'units': 512, 'activation': 'elu'}
+        ]),
+        dict(label='FCNN_6_elu', layers=[
+            {'units': 1024, 'activation': 'elu'},
+            {'units': 512, 'activation': 'elu'},
+            {'units': 256, 'activation': 'elu'}
+        ]),
+
+        dict(label='FCNN_1_sigmoid', layers=[
+            {'units': 128, 'activation': 'sigmoid'}
+        ]),
+        dict(label='FCNN_2_sigmoid', layers=[
+            {'units': 256, 'activation': 'sigmoid'}
+        ]),
+        dict(label='FCNN_3_sigmoid', layers=[
+            {'units': 512, 'activation': 'sigmoid'}
+        ]),
+        dict(label='FCNN_4_sigmoid', layers=[
+            {'units': 1024, 'activation': 'sigmoid'}
+        ]),
+        dict(label='FCNN_5_sigmoid', layers=[
+            {'units': 1024, 'activation': 'sigmoid'},
+            {'units': 512, 'activation': 'sigmoid'}
+        ]),
+        dict(label='FCNN_6_sigmoid', layers=[
+            {'units': 1024, 'activation': 'sigmoid'},
+            {'units': 512, 'activation': 'sigmoid'},
+            {'units': 256, 'activation': 'sigmoid'}
+        ])
     ]
 
-    all_hidden_layer_sizes = [[128]]
-
-    run_serial_experiment(data, params, all_hidden_layer_sizes)
+    run_serial_experiment(data, series_parameters, all_configurations)
 
 
 def main():

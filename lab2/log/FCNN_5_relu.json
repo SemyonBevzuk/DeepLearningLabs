@@ -1,0 +1,1 @@
+{"Parameters": {"batch_size": 128, "num_epochs": 10, "label": "FCNN_5_relu", "layers": [{"units": 1024, "activation": "relu"}, {"units": 512, "activation": "relu"}]}, "Statistics": {"Time_train": 676.699113, "Train_loss": 0.1533372817772462, "Train_accuracy": 0.9625585079193115, "Test_loss": 1.8886809175956467, "Test_accuracy": 0.8226444721221924}}
