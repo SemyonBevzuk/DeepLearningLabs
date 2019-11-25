@@ -35,28 +35,64 @@ def run_serial_data2():
     params = {'batch_size': 128,
               'num_epochs': 10}
     all_configurations = [
-        dict(label='CNN_7_relu', layers=[
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
+        dict(label='CNN_8_relu_dropout', layers=[
             {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
             {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
             {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
             {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Flatten'},
-            {'name': 'Dense', 'units': 512, 'activation': 'relu'}
-        ]),
-        dict(label='CNN_8_relu_dropout', layers=[
-            {'name': 'Conv2D', 'filters': 16, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
             {'name': 'Dropout', 'rate': 0.2},
-            {'name': 'Conv2D', 'filters': 32, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
-            {'name': 'MaxPool2D', 'pool_size': 2},
-            {'name': 'Dropout', 'rate': 0.2},
-            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
+            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same', 'activation': 'relu'},
             {'name': 'MaxPool2D', 'pool_size': 2},
             {'name': 'Dropout', 'rate': 0.5},
             {'name': 'Flatten'},
             {'name': 'Dense', 'units': 512, 'activation': 'relu'}
+        ]),
+        dict(label='CNN_7_elu', layers=[
+            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same', 'activation': 'elu'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same', 'activation': 'elu'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same', 'activation': 'elu'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Flatten'},
+            {'name': 'Dense', 'units': 512, 'activation': 'elu'}
+        ]),
+        dict(label='CNN_8_elu_dropout', layers=[
+            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same', 'activation': 'elu'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
+            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same', 'activation': 'elu'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
+            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same', 'activation': 'elu'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.5},
+            {'name': 'Flatten'},
+            {'name': 'Dense', 'units': 512, 'activation': 'elu'}
+        ]),
+        dict(label='CNN_7_sigmoid', layers=[
+            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same', 'activation': 'sigmoid'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same', 'activation': 'sigmoid'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same', 'activation': 'sigmoid'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Flatten'},
+            {'name': 'Dense', 'units': 512, 'activation': 'sigmoid'}
+        ]),
+        dict(label='CNN_8_sigmoid_dropout', layers=[
+            {'name': 'Conv2D', 'filters': 64, 'kernel_size': 3, 'padding': 'same', 'activation': 'sigmoid'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
+            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same', 'activation': 'sigmoid'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.2},
+            {'name': 'Conv2D', 'filters': 128, 'kernel_size': 3, 'padding': 'same', 'activation': 'sigmoid'},
+            {'name': 'MaxPool2D', 'pool_size': 2},
+            {'name': 'Dropout', 'rate': 0.5},
+            {'name': 'Flatten'},
+            {'name': 'Dense', 'units': 512, 'activation': 'sigmoid'}
         ]),
     ]
     run_serial_experiment(data, params, all_configurations)
