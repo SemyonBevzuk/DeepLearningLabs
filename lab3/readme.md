@@ -67,6 +67,24 @@
 | CNN_8_elu_dropout_model     | ![](img/graph_model/CNN_8_elu_dropout_model.png)     |
 | CNN_8_relu_dropout_model    | ![](img/graph_model/CNN_8_relu_dropout_model.png)    |
 | CNN_8_sigmoid_dropout_model | ![](img/graph_model/CNN_8_sigmoid_dropout_model.png) |
+| CNN_9_elu_model             | ![](img/graph_model/CNN_9_elu_model.png)             |
+| CNN_9_relu_model            | ![](img/graph_model/CNN_9_relu_model.png)            |
+| CNN_9_sigmoid_model         | ![](img/graph_model/CNN_9_sigmoid_model.png)         |
+| CNN_10_elu_model            | ![](img/graph_model/CNN_10_elu_model.png)            |
+| CNN_10_relu_model           | ![](img/graph_model/CNN_10_relu_model.png)           |
+| CNN_10_sigmoid_model        | ![](img/graph_model/CNN_10_sigmoid_model.png)        |
+| CNN_11_elu_model            | ![](img/graph_model/CNN_11_elu_model.png)            |
+| CNN_11_relu_model           | ![](img/graph_model/CNN_11_relu_model.png)           |
+| CNN_11_sigmoid_model        | ![](img/graph_model/CNN_11_sigmoid_model.png)        |
+| CNN_12_elu_model            | ![](img/graph_model/CNN_12_elu_model.png)            |
+| CNN_12_relu_model           | ![](img/graph_model/CNN_12_relu_model.png)           |
+| CNN_12_sigmoid_model        | ![](img/graph_model/CNN_12_sigmoid_model.png)        |
+| CNN_13_elu_model            | ![](img/graph_model/CNN_13_elu_model.png)            |
+| CNN_13_relu_model           | ![](img/graph_model/CNN_13_relu_model.png)           |
+| CNN_13_sigmoid_model        | ![](img/graph_model/CNN_13_sigmoid_model.png)        |
+| CNN_14_elu_model            | ![](img/graph_model/CNN_14_elu_model.png)            |
+| CNN_14_relu_model           | ![](img/graph_model/CNN_14_relu_model.png)           |
+| CNN_14_sigmoid_model        | ![](img/graph_model/CNN_14_sigmoid_model.png)        |
 
 [comment]: # (graph_model_table_end)
 
@@ -99,14 +117,32 @@ num_epochs = 10
 | CNN_3_elu             |    0.9094     |  0.8882   |     0.9957     |   0.0247   |   1101.1085    |
 | CNN_5_elu             |    0.8951     |  0.8769   |     0.9923     |   0.0241   |    790.2303    |
 | CNN_7_elu             |    0.9441     |  0.7605   |     0.9957     |   0.0228   |   2705.2305    |
+| CNN_9_elu             |    0.9339     |  0.6168   |     0.9977     |   0.0096   |   1710.7036    |
+| CNN_10_elu            |    0.9454     |   0.632   |     0.998      |   0.0081   |   2122.1241    |
+| CNN_11_elu            |    0.9453     |   1.142   |     0.9954     |   0.0269   |   4098.6694    |
+| CNN_12_elu            |    0.9151     |  0.8973   |     0.9923     |   0.0326   |   1314.5737    |
+| CNN_13_elu            |    0.9286     |  0.6866   |     0.9928     |   0.0347   |    2169.671    |
+| CNN_14_elu            |    0.9465     |  0.5064   |     0.9956     |   0.0201   |   2245.1453    |
 | CNN_1_relu            |    0.8823     |  0.7741   |     0.9941     |   0.0216   |    781.0184    |
 | CNN_3_relu            |    0.9111     |  0.5632   |     0.9938     |   0.0234   |   1066.1482    |
 | CNN_5_relu            |    0.8727     |  0.8005   |     0.9923     |   0.0218   |    766.4206    |
 | CNN_7_relu            |    0.9315     |  0.4822   |     0.998      |   0.0067   |   2640.5666    |
+| CNN_9_relu            |    0.9401     |  0.3631   |     0.9964     |   0.0112   |   1664.5328    |
+| CNN_10_relu           |    0.9481     |  0.3136   |     0.999      |   0.0033   |   2071.7088    |
+| CNN_11_relu           |    0.9432     |  0.3532   |     0.9955     |   0.0149   |   3999.6061    |
+| CNN_12_relu           |     0.926     |  0.4359   |     0.9965     |   0.0115   |    1303.817    |
+| CNN_13_relu           |    0.9328     |  0.3658   |     0.9972     |   0.0087   |   2119.9925    |
+| CNN_14_relu           |    0.9416     |  0.3321   |     0.9967     |   0.0104   |   2178.3999    |
 | CNN_1_sigmoid         |     0.808     |  0.7678   |     0.8956     |   0.3995   |    801.3745    |
 | CNN_3_sigmoid         |    0.8924     |   0.389   |     0.9964     |   0.0232   |   1081.7477    |
 | CNN_5_sigmoid         |    0.8122     |  0.7203   |     0.9884     |   0.0547   |    771.3893    |
 | CNN_7_sigmoid         |    0.8526     |  0.5881   |     0.9984     |   0.0105   |   2685.1879    |
+| CNN_9_sigmoid         |    0.8833     |  0.4122   |     0.9909     |   0.0401   |   1670.2351    |
+| CNN_10_sigmoid        |    0.8952     |  0.4313   |     0.9981     |   0.0134   |   2089.5842    |
+| CNN_11_sigmoid        |    0.8866     |  0.4321   |     0.9979     |   0.0115   |   4036.7329    |
+| CNN_12_sigmoid        |    0.8569     |  0.5909   |     0.9949     |   0.0235   |   1308.9783    |
+| CNN_13_sigmoid        |    0.8526     |  0.5846   |     0.993      |   0.0301   |    2138.743    |
+| CNN_14_sigmoid        |    0.0285     |  3.7647   |     0.0233     |   3.7642   |   2204.1186    |
 | CNN_2_elu_dropout     |    0.8831     |  1.1037   |     0.9954     |   0.0156   |    875.3395    |
 | CNN_4_elu_dropout     |    0.9139     |  0.5692   |     0.9963     |   0.0129   |   1213.8117    |
 | CNN_6_elu_dropout     |    0.8962     |  0.5066   |     0.997      |   0.0117   |    844.8452    |
@@ -150,6 +186,24 @@ num_epochs = 10
 | ![](img/graph_loss_accuracy/CNN_8_elu_dropout_accuracy.png)     | ![](img/graph_loss_accuracy/CNN_8_elu_dropout_loss.png)     |
 | ![](img/graph_loss_accuracy/CNN_8_relu_dropout_accuracy.png)    | ![](img/graph_loss_accuracy/CNN_8_relu_dropout_loss.png)    |
 | ![](img/graph_loss_accuracy/CNN_8_sigmoid_dropout_accuracy.png) | ![](img/graph_loss_accuracy/CNN_8_sigmoid_dropout_loss.png) |
+| ![](img/graph_loss_accuracy/CNN_9_elu_accuracy.png)             | ![](img/graph_loss_accuracy/CNN_9_elu_loss.png)             |
+| ![](img/graph_loss_accuracy/CNN_9_relu_accuracy.png)            | ![](img/graph_loss_accuracy/CNN_9_relu_loss.png)            |
+| ![](img/graph_loss_accuracy/CNN_9_sigmoid_accuracy.png)         | ![](img/graph_loss_accuracy/CNN_9_sigmoid_loss.png)         |
+| ![](img/graph_loss_accuracy/CNN_10_elu_accuracy.png)            | ![](img/graph_loss_accuracy/CNN_10_elu_loss.png)            |
+| ![](img/graph_loss_accuracy/CNN_10_relu_accuracy.png)           | ![](img/graph_loss_accuracy/CNN_10_relu_loss.png)           |
+| ![](img/graph_loss_accuracy/CNN_10_sigmoid_accuracy.png)        | ![](img/graph_loss_accuracy/CNN_10_sigmoid_loss.png)        |
+| ![](img/graph_loss_accuracy/CNN_11_elu_accuracy.png)            | ![](img/graph_loss_accuracy/CNN_11_elu_loss.png)            |
+| ![](img/graph_loss_accuracy/CNN_11_relu_accuracy.png)           | ![](img/graph_loss_accuracy/CNN_11_relu_loss.png)           |
+| ![](img/graph_loss_accuracy/CNN_11_sigmoid_accuracy.png)        | ![](img/graph_loss_accuracy/CNN_11_sigmoid_loss.png)        |
+| ![](img/graph_loss_accuracy/CNN_12_elu_accuracy.png)            | ![](img/graph_loss_accuracy/CNN_12_elu_loss.png)            |
+| ![](img/graph_loss_accuracy/CNN_12_relu_accuracy.png)           | ![](img/graph_loss_accuracy/CNN_12_relu_loss.png)           |
+| ![](img/graph_loss_accuracy/CNN_12_sigmoid_accuracy.png)        | ![](img/graph_loss_accuracy/CNN_12_sigmoid_loss.png)        |
+| ![](img/graph_loss_accuracy/CNN_13_elu_accuracy.png)            | ![](img/graph_loss_accuracy/CNN_13_elu_loss.png)            |
+| ![](img/graph_loss_accuracy/CNN_13_relu_accuracy.png)           | ![](img/graph_loss_accuracy/CNN_13_relu_loss.png)           |
+| ![](img/graph_loss_accuracy/CNN_13_sigmoid_accuracy.png)        | ![](img/graph_loss_accuracy/CNN_13_sigmoid_loss.png)        |
+| ![](img/graph_loss_accuracy/CNN_14_elu_accuracy.png)            | ![](img/graph_loss_accuracy/CNN_14_elu_loss.png)            |
+| ![](img/graph_loss_accuracy/CNN_14_relu_accuracy.png)           | ![](img/graph_loss_accuracy/CNN_14_relu_loss.png)           |
+| ![](img/graph_loss_accuracy/CNN_14_sigmoid_accuracy.png)        | ![](img/graph_loss_accuracy/CNN_14_sigmoid_loss.png)        |
 
 [comment]: # (graph_table_end)
 
