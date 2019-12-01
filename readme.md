@@ -6,7 +6,9 @@
 По входным данным *X* вычислить выход сети *U*. Задача обучения сети заключается
 в минимизации функции ошибки *E(U,Y)*, где *Y* - ожидаемый выход сети.
 
-![](https://latex.codecogs.com/svg.latex?E(w)=\sum\limits_{j=1}^My_j\ln{u_j})
+![](https://latex.codecogs.com/svg.latex?min(E(w,U,Y)))
+
+Сравнить различные конфигурации сетей.
 
 ## Данные
 Источник данных: [Traffic Signs Preprocessed](https://www.kaggle.com/valentynsichkar/traffic-signs-preprocessed)
