@@ -13,6 +13,10 @@ def read_raw_data(path):
     data['x_validation'] = data['x_validation'].transpose(0, 2, 3, 1)
     data['x_test'] = data['x_test'].transpose(0, 2, 3, 1)
 
+    #data['x_train'] = data['x_train'][:100]
+    #data['y_train'] = data['y_train'][:100]
+    #data['x_test'] = data['x_test'][:100]
+    #data['y_test'] = data['y_test'][:100]
     return data
 
 

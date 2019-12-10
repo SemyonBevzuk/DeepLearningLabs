@@ -16,8 +16,8 @@ import plthandler as ph
 import reporthandler as rh
 
 
-def main():
-    report_path = os.path.join('..', 'readme.md')
+
+def run_experiment_autoencoder_FCNN(regularization_parameter=0):
     save_folder_log = os.path.join('..', 'log')
     save_folder_img = os.path.join('..', 'img')
     save_folder_model = os.path.join('..', 'models')
@@ -25,108 +25,169 @@ def main():
     filename = 'data2.pickle'
     path = os.path.join('..', '..', 'data', filename)
     data = dh.get_matrix_data(path)
-    dh.print_data_information(data)
-
-    d_encoder, d_decoder, d_autoencoder = mh.create_dense_ae()
-    d_autoencoder.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
+    # dh.print_data_information(data)
 
     params = {'batch_size': 128,
-                  'num_epochs': 10}
-    statistics = {}
+              'num_epochs': 10,
+              'regularization_parameter': regularization_parameter}
 
-    time_start = datetime.now()
-    log = d_autoencoder.fit( data['x_train'],  data['x_train'],
-                      epochs=params['num_epochs'],
-                      batch_size=params['batch_size'],
-                      shuffle=True,
-                      validation_data=(data['x_test'], data['x_test']),
-                      verbose=2)
-    delta_time = datetime.now() - time_start
-    statistics['Time_train'] = delta_time.total_seconds()
+    encoder, decoder, autoencoder = mh.create_autoencoder_FCNN(params['regularization_parameter'])
+    autoencoder.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
 
-    score_train = d_autoencoder.evaluate(data['x_train'], data['x_train'], verbose=0)
-    statistics['Train_loss'] = score_train[0]
-    statistics['Train_accuracy'] = score_train[1]
+    mh.fit_and_save_autoencoder(autoencoder, params, data, save_folder_log, save_folder_img, save_folder_model)
 
-    score_test = d_autoencoder.evaluate(data['x_test'], data['x_test'], verbose=0)
-    statistics['Test_loss'] = score_test[0]
-    statistics['Test_accuracy'] = score_test[1]
-    model_info = {'Parameters': params, 'Statistics': statistics}
+    best_FCNN_name = 'FCNN_1_sigmoid'
+    best_FCNN_folder = os.path.join('..', '..', 'lab2')
 
-    mh.save_model(d_autoencoder, save_folder_model)
-    model_name = d_autoencoder.name
-    filename = model_name + '.json'
-    with open(os.path.join(save_folder_log, filename), 'w', encoding='utf-8') as file:
-        json.dump(model_info, file)
-    ph.save_accuracy_graph(log, model_name, save_folder_img)
-    ph.save_loss_graph(log, model_name, save_folder_img)
-    ph.save_model_graph(d_autoencoder, model_name, save_folder_img)
-
-
-    statistics = {}
-    model_d_encoder = Sequential()
-    for layer in d_encoder.layers:
-        model_d_encoder.add(layer)
-    model_d_encoder.add(Dense(units=43, activation='softmax', kernel_initializer='he_normal'))
-    model_d_encoder.name = 'FCNN_6_sigmoid_encoder'
-    model_d_encoder.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-
-    time_start = datetime.now()
-    log = model_d_encoder.fit(data['x_train'], data['y_train'],
-                        epochs=params['num_epochs'],
-                        batch_size=params['batch_size'],
-                        shuffle=True,
-                        validation_data=(data['x_test'], data['y_test']),
-                        verbose=2)
-    delta_time = datetime.now() - time_start
-    statistics['Time_train'] = delta_time.total_seconds()
-
-    score_train = model_d_encoder.evaluate(data['x_train'], data['y_train'], verbose=0)
-    statistics['Train_loss'] = score_train[0]
-    statistics['Train_accuracy'] = score_train[1]
-
-    score_test = model_d_encoder.evaluate(data['x_test'], data['y_test'], verbose=0)
-    statistics['Test_loss'] = score_test[0]
-    statistics['Test_accuracy'] = score_test[1]
-    model_info = {'Parameters': params, 'Statistics': statistics}
-
-    mh.save_model(model_d_encoder, save_folder_model)
-    model_name = model_d_encoder.name
-    filename = model_name + '.json'
-    with open(os.path.join(save_folder_log, filename), 'w', encoding='utf-8') as file:
-        json.dump(model_info, file)
-    ph.save_accuracy_graph(log, model_name, save_folder_img)
-    ph.save_loss_graph(log, model_name, save_folder_img)
-    ph.save_model_graph(model_d_encoder, model_name, save_folder_img)
+    mh.fit_and_save_pretrained_FCNN(encoder, best_FCNN_name, params, data, save_folder_log, save_folder_img, save_folder_model)
 
     data = dh.get_vector_data(path)
-    file = 'FCNN_6_sigmoid'
-    old_model_folder = os.path.join('..', '..', 'lab2', 'models')
-    old_model_log_folder = os.path.join('..', '..', 'lab2', 'log')
-    old_model = load_model(os.path.join(old_model_folder, file + '.h5'))
-    with open(os.path.join(old_model_log_folder, file + '.json'), 'r') as read_file:
-        model_info = json.load(read_file)
-    statistics = {}
-    statistics['Time_train'] = model_info['Statistics']['Time_train']
-    score_train = old_model.evaluate(data['x_train'], data['y_train'], verbose=0)
-    statistics['Train_loss'] = score_train[0]
-    statistics['Train_accuracy'] = score_train[1]
+    mh.save_statistic_from_best_model(best_FCNN_name, best_FCNN_folder, data, save_folder_log)
 
-    score_test = old_model.evaluate(data['x_test'], data['y_test'], verbose=0)
-    statistics['Test_loss'] = score_test[0]
-    statistics['Test_accuracy'] = score_test[1]
-    model_info = {'Parameters': params, 'Statistics': statistics}
 
-    model_name = old_model.name
-    filename = model_name + '.json'
-    with open(os.path.join(save_folder_log, filename), 'w', encoding='utf-8') as file:
-        json.dump(model_info, file)
+def run_experiment_autoencoder_CNN():
+    save_folder_log = os.path.join('..', 'log')
+    save_folder_img = os.path.join('..', 'img')
+    save_folder_model = os.path.join('..', 'models')
+
+    filename = 'data2.pickle'
+    path = os.path.join('..', '..', 'data', filename)
+    data = dh.get_matrix_data(path)
+    #dh.print_data_information(data)
+
+    params = {'batch_size': 128,
+              'num_epochs': 10}
+
+    encoder, decoder, autoencoder = mh.create_autoencoder_CNN()
+    autoencoder.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
+
+    mh.fit_and_save_autoencoder(autoencoder, params, data, save_folder_log, save_folder_img, save_folder_model)
+
+    best_CNN_name = 'CNN_1_relu'
+    best_CNN_folder = os.path.join('..', '..', 'lab3')
+
+    mh.fit_and_save_pretrained_CNN(encoder, best_CNN_name, params, data, save_folder_log, save_folder_img, save_folder_model)
+
+    mh.save_statistic_from_best_model(best_CNN_name, best_CNN_folder, data, save_folder_log)
+
+
+def run_experiment_deep_autoencoder_FCNN(regularization_parameter=0):
+    save_folder_log = os.path.join('..', 'log')
+    save_folder_img = os.path.join('..', 'img')
+    save_folder_model = os.path.join('..', 'models')
+
+    filename = 'data2.pickle'
+    path = os.path.join('..', '..', 'data', filename)
+    data = dh.get_matrix_data(path)
+    #dh.print_data_information(data)
+
+    params = {'batch_size': 128,
+              'num_epochs': 10,
+              'regularization_parameter': regularization_parameter}
+
+    encoder, decoder, autoencoder = mh.create_deep_autoencoder_FCNN(params['regularization_parameter'])
+    autoencoder.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
+
+    mh.fit_and_save_autoencoder(autoencoder, params, data, save_folder_log, save_folder_img, save_folder_model)
+
+    best_FCNN_name = 'FCNN_6_sigmoid'
+    best_FCNN_folder = os.path.join('..', '..', 'lab2')
+
+    mh.fit_and_save_pretrained_FCNN(encoder, best_FCNN_name, params, data, save_folder_log, save_folder_img, save_folder_model)
+
+    data = dh.get_vector_data(path)
+    mh.save_statistic_from_best_model(best_FCNN_name, best_FCNN_folder, data, save_folder_log)
+
+
+def run_experiment_deep_autoencoder_CNN(regularization_parameter=0):
+    save_folder_log = os.path.join('..', 'log')
+    save_folder_img = os.path.join('..', 'img')
+    save_folder_model = os.path.join('..', 'models')
+
+    filename = 'data2.pickle'
+    path = os.path.join('..', '..', 'data', filename)
+    data = dh.get_matrix_data(path)
+    #dh.print_data_information(data)
+
+    params = {'batch_size': 128,
+              'num_epochs': 10,
+              'regularization_parameter': regularization_parameter}
+
+    encoder, decoder, autoencoder = mh.create_deep_autoencoder_CNN()
+    autoencoder.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
+
+    mh.fit_and_save_autoencoder(autoencoder, params, data, save_folder_log, save_folder_img, save_folder_model)
+
+    best_CNN_name = 'CNN_10_relu'
+    best_CNN_folder = os.path.join('..', '..', 'lab3')
+
+    mh.fit_and_save_pretrained_CNN(encoder, best_CNN_name, params, data, save_folder_log, save_folder_img, save_folder_model)
+
+    mh.save_statistic_from_best_model(best_CNN_name, best_CNN_folder, data, save_folder_log)
+
+
+def run_experiment_stack_autoencoders_FCNN():
+    save_folder_log = os.path.join('..', 'log')
+    save_folder_img = os.path.join('..', 'img')
+    save_folder_model = os.path.join('..', 'models')
+
+    filename = 'data2.pickle'
+    path = os.path.join('..', '..', 'data', filename)
+    data = dh.get_matrix_data(path)
+    # dh.print_data_information(data)
+
+    params = {'batch_size': 128,
+              'num_epochs': 10}
+
+    encoders, autoencoders = mh.create_stack_autoencoders_FCNN()
+    for autoencoder in autoencoders:
+        autoencoder.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
+
+    mh.fit_and_save_stack_autoencoders(autoencoders, encoders, params, data, save_folder_log, save_folder_img, save_folder_model)
+
+    best_FCNN_name = 'FCNN_6_sigmoid'
+    best_FCNN_folder = os.path.join('..', '..', 'lab2')
+
+    mh.fit_and_save_pretrained_FCNN_from_stack_encoders(encoders, best_FCNN_name, params, data, save_folder_log, save_folder_img, save_folder_model)
+
+    data = dh.get_vector_data(path)
+    mh.save_statistic_from_best_model(best_FCNN_name, best_FCNN_folder, data, save_folder_log)
+
+def main():
+    report_path = os.path.join('..', 'readme.md')
+
+    save_folder_log = os.path.join('..', 'log')
+    save_folder_img = os.path.join('..', 'img')
+    save_folder_model = os.path.join('..', 'models')
+
+    #filename = 'data2.pickle'
+    #path = os.path.join('..', '..', 'data', filename)
+    #data = dh.get_matrix_data(path)
+    #data['x_train'] = data['x_train'][:100]
+    #data['y_train'] = data['y_train'][:100]
+    #data['x_test'] = data['x_test'][:100]
+    #data['y_test'] = data['y_test'][:100]
+
+    #print('\tFCNN test 1 layer\n')
+    #run_experiment_autoencoder_FCNN()
+    #print('\tCNN test 1 layer\n')
+    #run_experiment_autoencoder_CNN()
+
+
+    #print('\tFCNN\n')
+    #run_experiment_deep_autoencoder_FCNN()
+    #print('\tFCNN with regularization_parameter\n')
+    #run_experiment_deep_autoencoder_FCNN(regularization_parameter=0.0001)
+    #print('\tCNN\n')
+    #run_experiment_deep_autoencoder_CNN()
+    print('\tFCNN stack autoencoder\n')
+    run_experiment_stack_autoencoders_FCNN()
 
     rh.add_result_table_to_report(report_path, save_folder_log)
     #rh.add_graph_table_to_report(report_path, save_folder_img)
     #rh.add_graph_model_table_to_report(report_path, save_folder_img)
 
-    # mh.show_all_models(save_folder_model, save_folder_log)
+    #mh.show_all_models(save_folder_model, save_folder_log)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,1 @@
+{"Parameters": {"batch_size": 128, "num_epochs": 10, "regularization_parameter": 0}, "Statistics": {"Time_train": 1578.184105, "Train_loss": 0.022948549626661412, "Train_accuracy": 0.5116584897041321, "Test_loss": 0.023357701438434145, "Test_accuracy": 0.5380519032478333}}
