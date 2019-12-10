@@ -8,7 +8,7 @@ import plthandler as ph
 
 from datetime import datetime
 from keras.models import Model, load_model
-from keras.layers import Input, Conv2D, MaxPool2D, Flatten, Dense, Dropout
+from keras.layers import Input, Conv2D, MaxPool2D, Flatten, Dense, Dropout, Reshape
 from keras import Sequential
 
 
@@ -16,6 +16,25 @@ def save_model(model, save_folder):
     filename = model.name + '.h5'
     path = os.path.join(save_folder, filename)
     model.save(path)
+
+
+def create_dense_ae():
+    input_img = Input(shape=(32, 32, 3))
+    flat_img = Flatten()(input_img)
+    layer = Dense(1024, activation='sigmoid', kernel_initializer='he_normal')(flat_img)
+    layer = Dense(512, activation='sigmoid', kernel_initializer='he_normal')(layer)
+    encoded = Dense(256, activation='sigmoid', kernel_initializer='he_normal')(layer)
+
+    input_encoded = Input(shape=(256,))
+    layer = Dense(512, activation='sigmoid', kernel_initializer='he_normal')(input_encoded)
+    layer = Dense(1024, activation='sigmoid', kernel_initializer='he_normal')(layer)
+    flat_decoded = Dense(32 * 32 * 3, activation='sigmoid', kernel_initializer='he_normal')(layer)
+    decoded = Reshape((32, 32, 3))(flat_decoded)
+
+    encoder = Model(input_img, encoded, name="encoder")
+    decoder = Model(input_encoded, decoded, name="decoder")
+    autoencoder = Model(input_img, decoder(encoder(input_img)), name="autoencoder")
+    return encoder, decoder, autoencoder
 
 
 def fit_model(data, params):
