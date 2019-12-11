@@ -170,10 +170,20 @@ num_epochs = 10
 
 ### Сравнение для FCNN
 
+#### FCNN_1_sigmoid
+
 |              Model name               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
 | FCNN_1_sigmoid                        |    0.8541     |  0.5912   |     0.9611     |   0.1951   |    87.2454     |
 | FCNN_1_sigmoid_pretraining            |    0.8546     |  0.5828   |     0.9611     |   0.1976   |    102.8282    |
+
+
+|              Model name               |                            Accuracy                                    |                            Loss                                    |
+| :------------------------------------ | :--------------------------------------------------------------------- | :----------------------------------------------------------------- |
+| FCNN_1_sigmoid                        | ![](../lab2/img/graph_loss_accuracy/FCNN_1_sigmoid_accuracy.png)       | ![](../lab2/img/graph_loss_accuracy/FCNN_1_sigmoid_loss.png)       |
+| FCNN_1_sigmoid_pretraining            | ![](img/graph_loss_accuracy/FCNN_1_sigmoid_pretraining_accuracy.png)   | ![](img/graph_loss_accuracy/FCNN_1_sigmoid_pretraining_loss.png)   |
+
+#### FCNN_6_sigmoid
 
 |              Model name               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
@@ -182,7 +192,12 @@ num_epochs = 10
 | FCNN_6_sigmoid_pretraining_0.0001     |    0.8419     |  0.5944   |     0.9656     |   0.1477   |    702.888     |
 | FCNN_6_sigmoid_pretraining_with_stack |    0.8456     |  0.6361   |     0.9759     |   0.0873   |    689.8882    |
 
-Таблица для автокодировщиков:
+|              Model name               |                            Accuracy                                    |                            Loss                                    |
+| :------------------------------------ | :--------------------------------------------------------------------- | :----------------------------------------------------------------- |
+| FCNN_6_sigmoid                        | ![](../lab2/img/graph_loss_accuracy/FCNN_6_sigmoid_accuracy.png)       | ![](../lab2/img/graph_loss_accuracy/FCNN_6_sigmoid_loss.png)       |
+| FCNN_6_sigmoid_pretraining            | ![](img/graph_loss_accuracy/FCNN_6_sigmoid_pretraining_accuracy.png)   | ![](img/graph_loss_accuracy/FCNN_6_sigmoid_pretraining_loss.png)   |
+
+#### Таблица для автокодировщиков
 
 |              Model name               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
@@ -195,19 +210,26 @@ num_epochs = 10
 
 ### Сравнение для СNN
 
+#### CNN_1_relu
 |              Model name               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
 | CNN_1_relu                            |    0.8823     |  0.7741   |     0.9941     |   0.0216   |    781.0184    |
 | CNN_1_relu_pretraining                |    0.8898     |  0.7241   |     0.9895     |   0.0397   |    783.3383    |
 
+|              Model name           |                            Accuracy                                    |                            Loss                                    |
+| :-------------------------------- | :--------------------------------------------------------------------- | :----------------------------------------------------------------- |
+| CNN_1_relu                        | ![](../lab3/img/graph_loss_accuracy/CNN_1_relu_accuracy.png)           | ![](../lab3/img/graph_loss_accuracy/CNN_1_relu_loss.png)           |
+| CNN_1_relu_pretraining            | ![](img/graph_loss_accuracy/CNN_1_relu_pretraining_accuracy.png)       | ![](img/graph_loss_accuracy/CNN_1_relu_pretraining_loss.png)       |
+
+
+#### CNN_10_relu
 
 |              Model name               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
 | CNN_10_relu                           |    0.9481     |  0.3136   |     0.999      |   0.0033   |   2071.7088    |
 | CNN_10_relu_pretraining               |    0.9481     |  0.2589   |     0.9978     |   0.0068   |   2067.4936    |
 
-
-Таблица для автокодировщиков:
+#### Таблица для автокодировщиков
 
 |              Model name               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
