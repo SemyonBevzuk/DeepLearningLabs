@@ -29,11 +29,13 @@ Decoder - восстанавливает входные данные: ![](https:
 
 Задача обучения:
  
-![](https://latex.codecogs.com/svg.latex?J(\Theta)=\sum_{x\in&space;D_n}L\left&space;(x,g(f(x))\right)\rightarrow\underset{\Theta}{min})
+![](https://latex.codecogs.com/svg.latex?J(\Theta)=\sum_{x\in&space;D_n}L\left&space;(x,g(f(x))\right)\rightarrow\underset{\Theta=\left\{W_h,W_y,b_n,b_y\right\}}{min})
+
+Где ![](https://latex.codecogs.com/svg.latex?\inline&space;\Theta=\left\{W_h,W_y,b_n,b_y\right\}) - обучаемые параметры сети
 
 Для борьбы с переобучением используется регуляризация. Её можно внести на скрытый слой с параметром ![](https://latex.codecogs.com/svg.latex?\lambda) порядка ![](https://latex.codecogs.com/svg.latex?10^{-4}):
 
-![](https://latex.codecogs.com/svg.latex?J(\Theta)=\sum_{x&space;\in&space;D_n}&space;L&space;\left(x,g(f(x))\right)&plus;\lambda&space;\sum_{i,j}w_{i,j}&space;\rightarrow&space;\underset{\Theta=\left\{W_h,W_y,b_n,b_y\right\}}{min})
+![](https://latex.codecogs.com/svg.latex?J(\Theta)=\sum_{x&space;\in&space;D_n}&space;L&space;\left(x,g(f(x))\right)&plus;\lambda&space;\sum_{i,j}w_{i,j}&space;\rightarrow&space;\underset{\Theta}{min})
 
 ## Стек автокодировщиков
 Может быть применен при работе с глубокими сетями. Каждый автокодировщик обучается как сеть прямого распространения и работает с одним слоем.
