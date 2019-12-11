@@ -51,22 +51,22 @@
 | CNN_1_relu                            |    0.8823     |  0.7741   |     0.9941     |   0.0216   |    781.0184    |
 | CNN_10_relu                           |    0.9481     |  0.3136   |     0.999      |   0.0033   |   2071.7088    |
 | FCNN_1_sigmoid                        |    0.8541     |  0.5912   |     0.9611     |   0.1951   |    87.2454     |
-| FCNN_6_sigmoid                        |     0.92      |  0.3807   |      0.96      |   0.1474   |    689.7557    |
+| FCNN_6_sigmoid                        |    0.8545     |  0.5885   |     0.9783     |   0.0777   |    689.7557    |
 | CNN_1_relu_autoencoder                |    0.5702     |  0.0117   |     0.512      |   0.0157   |   1881.0585    |
 | CNN_1_relu_pretraining                |    0.8898     |  0.7241   |     0.9895     |   0.0397   |    783.3383    |
 | FCNN_6_sigmoid_encoder                |    0.8226     |  0.6664   |     0.9759     |   0.0911   |    721.7957    |
-| CNN_10_relu_autoencoder               |    0.4277     |  0.0335   |     0.396      |   0.0289   |   4888.8824    |
-| CNN_10_relu_pretraining               |     0.947     |  0.2862   |     0.9948     |   0.0171   |    2108.957    |
+| CNN_10_relu_autoencoder               |     0.529     |  0.0123   |     0.481      |   0.0162   |   4135.7274    |
+| CNN_10_relu_pretraining               |    0.9481     |  0.2589   |     0.9978     |   0.0068   |   2067.4936    |
 | FCNN_1_sigmoid_autoencoder            |     0.599     |  0.0183   |     0.5801     |   0.0198   |    250.9933    |
 | FCNN_1_sigmoid_pretraining            |    0.8546     |  0.5828   |     0.9611     |   0.1976   |    102.8282    |
-| FCNN_6_sigmoid_autoencoder            |    0.5381     |  0.0234   |     0.5117     |   0.0229   |   1578.1841    |
-| FCNN_6_sigmoid_pretraining            |     0.04      |  3.7913   |      0.2       |   3.1921   |     1.609      |
-| FCNN_6_sigmoid_autoencoder_0.0001     |    0.3365     |  0.0751   |     0.3361     |   0.0533   |   1518.9803    |
-| FCNN_6_sigmoid_pretraining_0.0001     |    0.8496     |  0.5436   |     0.9778     |   0.1029   |    701.6596    |
-| FCNN_6_sigmoid_autoencoder_1_stack    |     0.336     |  0.0464   |     0.3425     |   0.0376   |     2.3737     |
-| FCNN_6_sigmoid_autoencoder_2_stack    |      0.0      |  0.0569   |      0.0       |   0.0465   |     0.7053     |
-| FCNN_6_sigmoid_autoencoder_3_stack    |     0.08      |  0.0316   |      0.05      |   0.0309   |     0.4728     |
-| FCNN_6_sigmoid_pretraining_with_stack |     0.02      |  3.7946   |      0.18      |   3.2597   |     1.6839     |
+| FCNN_6_sigmoid_autoencoder            |    0.5114     |  0.0234   |     0.4855     |   0.023    |   1508.7251    |
+| FCNN_6_sigmoid_pretraining            |     0.842     |  0.6536   |     0.9828     |   0.0709   |    697.6593    |
+| FCNN_6_sigmoid_autoencoder_0.0001     |    0.3367     |  0.0751   |     0.3363     |   0.0533   |   1507.0768    |
+| FCNN_6_sigmoid_pretraining_0.0001     |    0.8419     |  0.5944   |     0.9656     |   0.1477   |    702.888     |
+| FCNN_6_sigmoid_autoencoder_1_stack    |    0.6576     |  0.0137   |     0.6345     |   0.017    |    1246.62     |
+| FCNN_6_sigmoid_autoencoder_2_stack    |    0.6008     |  0.0022   |     0.5904     |   0.0015   |    216.447     |
+| FCNN_6_sigmoid_autoencoder_3_stack    |    0.7311     |  0.0016   |     0.7354     |   0.0012   |    31.2123     |
+| FCNN_6_sigmoid_pretraining_with_stack |    0.8456     |  0.6361   |     0.9759     |   0.0873   |    689.8882    |
 
 [comment]: # (result_table_end)
 

@@ -1,1 +1,1 @@
-{"Parameters": {"batch_size": 128, "num_epochs": 10}, "Statistics": {"Time_train": 0.472841, "Train_loss": 0.03093239262700081, "Train_accuracy": 0.05000000074505806, "Test_loss": 0.031648231148719785, "Test_accuracy": 0.07999999821186066}}
+{"Parameters": {"batch_size": 128, "num_epochs": 10}, "Statistics": {"Time_train": 31.212296, "Train_loss": 0.0011536445801041161, "Train_accuracy": 0.7354148030281067, "Test_loss": 0.00155748310755136, "Test_accuracy": 0.7311164140701294}}

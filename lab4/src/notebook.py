@@ -174,12 +174,12 @@ def main():
     #run_experiment_autoencoder_CNN()
 
 
-    #print('\tFCNN\n')
-    #run_experiment_deep_autoencoder_FCNN()
-    #print('\tFCNN with regularization_parameter\n')
-    #run_experiment_deep_autoencoder_FCNN(regularization_parameter=0.0001)
-    #print('\tCNN\n')
-    #run_experiment_deep_autoencoder_CNN()
+    print('\tFCNN\n')
+    run_experiment_deep_autoencoder_FCNN()
+    print('\tFCNN with regularization_parameter\n')
+    run_experiment_deep_autoencoder_FCNN(regularization_parameter=0.0001)
+    print('\tCNN\n')
+    run_experiment_deep_autoencoder_CNN()
     print('\tFCNN stack autoencoder\n')
     run_experiment_stack_autoencoders_FCNN()
 
