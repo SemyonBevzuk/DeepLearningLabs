@@ -1,19 +1,19 @@
 # Лабораторная работа №4
 В ходе лабораторной работы необходимо реализовать несколько методов обучения без учителя.
 
-На основе этих методов получить начальные значения для некоторых моделей и обучить их.
+На основе этих методов получить начальные значения весов для некоторых моделей и обучить их.
 
 Сравнить результаты с моделями, которые были обучены со случайными весами.
 
-## Реализованные подходы
+# Реализованные подходы
 
 ## Автокодировщик (с регуляризацией)
-Autoencoder - пытается максимально приблизить значение на выходе к значению на входе.
+Autoencoder пытается максимально приблизить значение на выходе к значению на входе.
 Состоит из двух частей: encoder и decoder.
 
-Encoder - кодирует входные данные ![](https://latex.codecogs.com/svg.latex?h=f(x)=s_f(W_h*x&plus;b_h))
+Encoder - кодирует входные данные: ![](https://latex.codecogs.com/svg.latex?\inline&space;h=f(x)=s_f(W_h*x;b_h))
 
-Decoder - восстанавливает входные данные ![](https://latex.codecogs.com/svg.latex?y=g(h))
+Decoder - восстанавливает входные данные: ![](https://latex.codecogs.com/svg.latex?\inline&space;y=g(h))
 
 ![](img/autoencoder.svg)
 
@@ -21,7 +21,7 @@ Decoder - восстанавливает входные данные ![](https:/
 
 Цель обучения - минимизация отличий между входом и выходом.
 
-![](https://latex.codecogs.com/svg.latex?L(x,&space;y)&space;\rightarrow&space;min)
+![](https://latex.codecogs.com/svg.latex?L(x,y)\rightarrow&space;min)
  
 В качестве функции ошибки можно использовать кросс-энтропию или среднеквадратичную ошибку:
 
@@ -146,8 +146,8 @@ Decoder - восстанавливает входные данные ![](https:/
 Является точкой входа. Блокнот для проведения экспериментов. Содержит метод для запуска серийного эксперимента с 
 возможностью настройки конфигураций сетей.
 
-## Численные эксперименты
-### Параметры
+# Численные эксперименты
+## Параметры
 x_train = (86989, (32, 32, 3))
 
 y_train = (86989, 43)
@@ -168,9 +168,9 @@ batch_size = 128
 
 num_epochs = 10
 
-### Сравнение для FCNN
+## Сравнение для FCNN
 
-#### FCNN_1_sigmoid
+### FCNN_1_sigmoid
 
 |              Model name               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
@@ -183,7 +183,7 @@ num_epochs = 10
 | FCNN_1_sigmoid                        | ![](../lab2/img/graph_loss_accuracy/FCNN_1_sigmoid_accuracy.png)       | ![](../lab2/img/graph_loss_accuracy/FCNN_1_sigmoid_loss.png)       |
 | FCNN_1_sigmoid_pretraining            | ![](img/graph_loss_accuracy/FCNN_1_sigmoid_pretraining_accuracy.png)   | ![](img/graph_loss_accuracy/FCNN_1_sigmoid_pretraining_loss.png)   |
 
-#### FCNN_6_sigmoid
+### FCNN_6_sigmoid
 
 |              Model name               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
@@ -197,7 +197,7 @@ num_epochs = 10
 | FCNN_6_sigmoid                        | ![](../lab2/img/graph_loss_accuracy/FCNN_6_sigmoid_accuracy.png)       | ![](../lab2/img/graph_loss_accuracy/FCNN_6_sigmoid_loss.png)       |
 | FCNN_6_sigmoid_pretraining            | ![](img/graph_loss_accuracy/FCNN_6_sigmoid_pretraining_accuracy.png)   | ![](img/graph_loss_accuracy/FCNN_6_sigmoid_pretraining_loss.png)   |
 
-#### Таблица для автокодировщиков
+### Таблица для автокодировщиков
 
 |              Model name               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
@@ -208,9 +208,9 @@ num_epochs = 10
 | FCNN_6_sigmoid_autoencoder_2_stack    |    0.6008     |  0.0022   |     0.5904     |   0.0015   |    216.447     |
 | FCNN_6_sigmoid_autoencoder_3_stack    |    0.7311     |  0.0016   |     0.7354     |   0.0012   |    31.2123     |
 
-### Сравнение для СNN
+## Сравнение для СNN
 
-#### CNN_1_relu
+### CNN_1_relu
 |              Model name               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
 | CNN_1_relu                            |    0.8823     |  0.7741   |     0.9941     |   0.0216   |    781.0184    |
@@ -222,21 +222,21 @@ num_epochs = 10
 | CNN_1_relu_pretraining            | ![](img/graph_loss_accuracy/CNN_1_relu_pretraining_accuracy.png)       | ![](img/graph_loss_accuracy/CNN_1_relu_pretraining_loss.png)       |
 
 
-#### CNN_10_relu
+### CNN_10_relu
 
 |              Model name               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
 | CNN_10_relu                           |    0.9481     |  0.3136   |     0.999      |   0.0033   |   2071.7088    |
 | CNN_10_relu_pretraining               |    0.9481     |  0.2589   |     0.9978     |   0.0068   |   2067.4936    |
 
-#### Таблица для автокодировщиков
+### Таблица для автокодировщиков
 
 |              Model name               | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
 | CNN_1_relu_autoencoder                |    0.5702     |  0.0117   |     0.512      |   0.0157   |   1881.0585    |
 | CNN_10_relu_autoencoder               |     0.529     |  0.0123   |     0.481      |   0.0162   |   4135.7274    |
 
-### Анализ
+## Анализ
 
 Эксперименты показали, что начальная настройка весов через методы обучения без учителя малоэффективна.
 С учетом затрат на обучение моделей для инициализации весов эти методы дают слишком маленький прирост в качестве.
