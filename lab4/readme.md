@@ -29,7 +29,7 @@ Decoder - восстанавливает входные данные: ![](https:
 
 Задача обучения:
  
-![](https://latex.codecogs.com/svg.latex?J(\Theta)=\sum_{x\in&space;D_n}L\left&space;(x,g(f(x))\right)\rightarrow\underset{\Theta=\left\{W_h,W_y,b_n,b_y\right\}}{min})
+![](https://latex.codecogs.com/svg.latex?J(\Theta)=\sum_{x\in&space;D_n}L\left&space;(x,g(f(x))\right)\rightarrow\underset{\Theta}{min})
 
 Где ![](https://latex.codecogs.com/svg.latex?\inline&space;\Theta=\left\{W_h,W_y,b_n,b_y\right\}) - обучаемые параметры сети
 
@@ -53,11 +53,12 @@ Decoder - восстанавливает входные данные: ![](https:
 
 # Выбранные модели
 Из проведенных экспериментов были отобраны модели,
-которые показали лучший результат среди полносвязных и сверточных сетей: FCNN_6_sigmoid и CNN_10_relu.
+которые показали лучший результат среди полносвязных и сверточных сетей: **FCNN_6_sigmoid** и **CNN_10_relu**.
 
-Помимо этого, были взяты лучшие сети с минимальной конфигурацией: FCNN_1_sigmoid и CNN_1_relu.
+Помимо этого, были взяты лучшие сети с минимальной конфигурацией: **FCNN_1_sigmoid** и **CNN_1_relu**.
 
 ##FCNN_1_sigmoid
+
 |         Model name          |                     Model graph                       |
 | :-------------------------- | :---------------------------------------------------- |
 | FCNN_1_sigmoid              | ![](../lab2/img/graph_model/FCNN_1_sigmoid_model.png) |
