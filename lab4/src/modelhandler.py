@@ -318,6 +318,7 @@ def fit_and_save_stack_autoencoders(autoencoders, encoders, params, data, save_f
     data_temp['x_test'] = encoders[1].predict(data_temp['x_test'])
     fit_and_save_autoencoder(autoencoders[2], params, data_temp, save_folder_log, save_folder_img, save_folder_model)
 
+
 def fit_and_save_pretrained_FCNN_from_stack_encoders(encoders, model_name, params, data, save_folder_log, save_folder_img, save_folder_model):
     statistics = {}
     model_pretrained = Sequential()

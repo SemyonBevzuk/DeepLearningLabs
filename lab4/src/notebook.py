@@ -2,12 +2,6 @@ import json
 import os
 import sys
 
-from keras import Sequential
-from keras.engine.saving import load_model
-from datetime import datetime
-
-from keras.layers import Dense
-
 sys.path.append('../../src/')
 
 import datahandler as dh
@@ -17,7 +11,7 @@ import reporthandler as rh
 
 
 
-def run_experiment_autoencoder_FCNN(regularization_parameter=0):
+def run_experiment_autoencoder_FCNN(regularization_parameter=0.0):
     save_folder_log = os.path.join('..', 'log')
     save_folder_img = os.path.join('..', 'img')
     save_folder_model = os.path.join('..', 'models')
@@ -71,7 +65,7 @@ def run_experiment_autoencoder_CNN():
     mh.save_statistic_from_best_model(best_CNN_name, best_CNN_folder, data, save_folder_log)
 
 
-def run_experiment_deep_autoencoder_FCNN(regularization_parameter=0):
+def run_experiment_deep_autoencoder_FCNN(regularization_parameter=0.0):
     save_folder_log = os.path.join('..', 'log')
     save_folder_img = os.path.join('..', 'img')
     save_folder_model = os.path.join('..', 'models')
@@ -99,7 +93,7 @@ def run_experiment_deep_autoencoder_FCNN(regularization_parameter=0):
     mh.save_statistic_from_best_model(best_FCNN_name, best_FCNN_folder, data, save_folder_log)
 
 
-def run_experiment_deep_autoencoder_CNN(regularization_parameter=0):
+def run_experiment_deep_autoencoder_CNN(regularization_parameter=0.0):
     save_folder_log = os.path.join('..', 'log')
     save_folder_img = os.path.join('..', 'img')
     save_folder_model = os.path.join('..', 'models')
@@ -168,10 +162,10 @@ def main():
     #data['x_test'] = data['x_test'][:100]
     #data['y_test'] = data['y_test'][:100]
 
-    #print('\tFCNN test 1 layer\n')
-    #run_experiment_autoencoder_FCNN()
-    #print('\tCNN test 1 layer\n')
-    #run_experiment_autoencoder_CNN()
+    print('\tFCNN test 1 layer\n')
+    run_experiment_autoencoder_FCNN()
+    print('\tCNN test 1 layer\n')
+    run_experiment_autoencoder_CNN()
 
 
     print('\tFCNN\n')
