@@ -29,7 +29,7 @@ Decoder - восстанавливает входные данные: ![](https:
 
 Задача обучения:
  
-![](https://latex.codecogs.com/svg.latex?J(\Theta&space;)=\sum_{x&space;\in&space;D_n}&space;L&space;\left&space;(&space;x,&space;g(f(x))&space;\right&space;)&space;\rightarrow&space;\underset{\Theta&space;=&space;\left&space;\{&space;W_h,&space;W_y,&space;b_n,&space;b_y&space;\right\}}&space;{min})
+![](https://latex.codecogs.com/svg.latex?J(\Theta)=\sum_{x\in&space;D_n}L\left&space;(x,g(f(x))\right)\rightarrow\underset{\Theta=\left\{W_h,W_y,b_n,b_y\right\}}{min})
 
 Для борьбы с переобучением используется регуляризация. Её можно внести на скрытый слой с параметром ![](https://latex.codecogs.com/svg.latex?\lambda) порядка ![](https://latex.codecogs.com/svg.latex?10^{-4}):
 
