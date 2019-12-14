@@ -34,7 +34,7 @@ def fit_model_base_NASNetMobile(data, params):
     model = Model(inputs=baseModel.input, outputs=headModel)
     model.name = params['label']
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    print(model.summary())
+    #print(model.summary())
     log = model.fit(data['x_train'], data['y_train'], batch_size=params['batch_size'], epochs=params['num_epochs'],
                     validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=1)
     return (model, log)

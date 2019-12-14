@@ -2,7 +2,12 @@ import json
 import os
 import sys
 
+#print(os.getcwd())
+os.chdir('/content/drive/My Drive/Colab Notebooks/DeepLearning_Folder/DeepLearningLabs/lab5/src/')
+#print(os.getcwd())
 sys.path.append('../../src/')
+sys.path.append('/content/drive/My Drive/Colab Notebooks/DeepLearning_Folder/DeepLearningLabs/src/')
+#print(sys.path)
 
 import datahandler as dh
 import modelhandler as mh
@@ -29,6 +34,7 @@ def run_experiment_base_InceptionResNetV2():
 
 
 def main():
+
     report_path = os.path.join('..', 'readme.md')
 
     save_folder_log = os.path.join('..', 'log')
