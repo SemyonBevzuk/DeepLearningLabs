@@ -64,12 +64,9 @@ def fit_and_save_base_NASNetMobile(data, params, save_folder_model, save_folder_
     filename = model_name + '.json'
     with open(os.path.join(save_folder_log, filename), 'w', encoding='utf-8') as file:
         json.dump(model_info, file)
-    filename = model_name + '_LOG' + '.json'
-    with open(os.path.join(save_folder_log, filename), 'w', encoding='utf-8') as file:
-        json.dump(log, file)
 
-    ph.save_loss_graph(log, model_name, save_folder_graphs)
-    ph.save_accuracy_graph(log, model_name, save_folder_graphs)
+    #ph.save_loss_graph(log, model_name, save_folder_graphs)
+    #ph.save_accuracy_graph(log, model_name, save_folder_graphs)
     ph.save_model_graph(model, model_name, save_folder_graphs)
     return model_name
 
