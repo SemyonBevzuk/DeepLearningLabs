@@ -1,9 +1,9 @@
-import re
+
 import sys
 import json
 import os
 
-from matplotlib.pyplot import imshow
+import numpy as np
 
 sys.path.append('../../src/')
 import plthandler as ph
@@ -13,7 +13,6 @@ from keras.models import Model, load_model
 from keras.layers import Input, Conv2D, MaxPool2D, Flatten, Dense, Dropout
 from keras import Sequential
 from keras.applications.nasnet import NASNetMobile
-
 
 def save_model(model, save_folder):
     filename = model.name + '.h5'
@@ -28,10 +27,11 @@ def fit_model_base_NASNetMobile(data, params):
 
     headModel = baseModel.output
     headModel = Flatten(name="flatten")(headModel)
-    headModel = Dense(512, activation="relu")(headModel)
+    #headModel = Dense(512, activation="relu")(headModel)
     headModel = Dense(43, activation="softmax")(headModel)
 
     model = Model(inputs=baseModel.input, outputs=headModel)
+
     model.name = params['label']
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     #print(model.summary())
@@ -64,9 +64,12 @@ def fit_and_save_base_NASNetMobile(data, params, save_folder_model, save_folder_
     filename = model_name + '.json'
     with open(os.path.join(save_folder_log, filename), 'w', encoding='utf-8') as file:
         json.dump(model_info, file)
+    filename = model_name + '_LOG' + '.json'
+    with open(os.path.join(save_folder_log, filename), 'w', encoding='utf-8') as file:
+        json.dump(log, file)
 
-    ph.save_accuracy_graph(log, model_name, save_folder_graphs)
     ph.save_loss_graph(log, model_name, save_folder_graphs)
+    ph.save_accuracy_graph(log, model_name, save_folder_graphs)
     ph.save_model_graph(model, model_name, save_folder_graphs)
     return model_name
 
