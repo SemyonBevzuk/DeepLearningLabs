@@ -42,6 +42,10 @@ num_epochs = 10
 
 [comment]: # (result_table_start)
 
+| Model name | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
+| :--------- | :-----------: | :-------: | :------------: | :--------: | :------------: |
+| del        |    0.8823     |  0.7741   |     0.9941     |   0.0216   |    781.0184    |
+
 [comment]: # (result_table_end)
 
 ## Анализ

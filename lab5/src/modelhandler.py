@@ -14,6 +14,7 @@ from keras.layers import Input, Conv2D, MaxPool2D, Flatten, Dense, Dropout
 from keras import Sequential
 from keras.applications.nasnet import NASNetMobile
 
+
 def save_model(model, save_folder):
     filename = model.name + '.h5'
     path = os.path.join(save_folder, filename)
@@ -21,13 +22,30 @@ def save_model(model, save_folder):
 
 
 def fit_model_base_NASNetMobile(data, params):
-    baseModel = NASNetMobile(weights='imagenet', include_top=False, input_tensor=Input(shape=(32, 32, 3)), classes=43)
+    baseModel = NASNetMobile(weights='imagenet', include_top=True, input_tensor=Input(shape=(32, 32, 3)))
+    for layer in baseModel.layers:
+        layer.trainable = False
+
+    model = baseModel
+
+    model.name = params['label']
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    #print(model.summary())
+    log = model.fit(data['x_train'], data['y_train'], batch_size=params['batch_size'], epochs=params['num_epochs'],
+                    validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=1)
+    return (model, log)
+
+
+def fit_model_NASNetMobile_with_fully_connected_layers(data, params):
+    baseModel = NASNetMobile(weights='imagenet', include_top=False, input_tensor=Input(shape=(32, 32, 3)))
     for layer in baseModel.layers:
         layer.trainable = False
 
     headModel = baseModel.output
     headModel = Flatten(name="flatten")(headModel)
-    #headModel = Dense(512, activation="relu")(headModel)
+    headModel = Dense(512, activation="relu")(headModel)
+    headModel = Dense(256, activation="relu")(headModel)
+    headModel = Dense(128, activation="relu")(headModel)
     headModel = Dense(43, activation="softmax")(headModel)
 
     model = Model(inputs=baseModel.input, outputs=headModel)
@@ -39,14 +57,74 @@ def fit_model_base_NASNetMobile(data, params):
                     validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=1)
     return (model, log)
 
+def fit_model_NASNetMobile(data, params):
+    baseModel = NASNetMobile(weights=None, include_top=True, input_tensor=Input(shape=(32, 32, 3)))
+
+    model = baseModel
+
+    model.name = params['label']
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    # print(model.summary())
+    log = model.fit(data['x_train'], data['y_train'], batch_size=params['batch_size'], epochs=params['num_epochs'],
+                    validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=1)
+    return (model, log)
+
+
+def fit_model_NASNetMobile_with_classifier(data, params):
+    baseModel = NASNetMobile(weights=None, include_top=False, input_tensor=Input(shape=(32, 32, 3)))
+
+    headModel = baseModel.output
+    headModel = Flatten(name="flatten")(headModel)
+    headModel = Dense(512, activation="relu")(headModel)
+    headModel = Dense(256, activation="relu")(headModel)
+    headModel = Dense(128, activation="relu")(headModel)
+    headModel = Dense(43, activation="softmax")(headModel)
+
+    model = Model(inputs=baseModel.input, outputs=headModel)
+
+    model.name = params['label']
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    # print(model.summary())
+    log = model.fit(data['x_train'], data['y_train'], batch_size=params['batch_size'], epochs=params['num_epochs'],
+                    validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=1)
+    return (model, log)
+
+
+def fit_and_save_NASNetMobile_with_fully_connected_layers(data, params, save_folder_model, save_folder_log, save_folder_graphs):
+    time_start = datetime.now()
+    model, log = fit_model_NASNetMobile_with_fully_connected_layers(data, params)
+    delta_time = datetime.now() - time_start
+
+    save_all(delta_time, model, data, params, save_folder_model, save_folder_log, save_folder_graphs)
+
 
 def fit_and_save_base_NASNetMobile(data, params, save_folder_model, save_folder_log, save_folder_graphs):
-    statistics = {}
-
     time_start = datetime.now()
     model, log = fit_model_base_NASNetMobile(data, params)
     delta_time = datetime.now() - time_start
-    statistics['Time_train'] = delta_time.total_seconds()
+
+    save_all(delta_time, model, data, params, save_folder_model, save_folder_log, save_folder_graphs)
+
+
+def fit_and_save_NASNetMobile(data, params, save_folder_model, save_folder_log, save_folder_img):
+    time_start = datetime.now()
+    model, log = fit_model_NASNetMobile(data, params)
+    delta_time = datetime.now() - time_start
+
+    save_all(delta_time, model, data, params, save_folder_model, save_folder_log, save_folder_img)
+
+
+def fit_and_save_NASNetMobile_with_classifier(data, params, save_folder_model, save_folder_log, save_folder_img):
+    time_start = datetime.now()
+    model, log = fit_model_NASNetMobile_with_classifier(data, params)
+    delta_time = datetime.now() - time_start
+
+    save_all(delta_time, model, data, params, save_folder_model, save_folder_log, save_folder_img)
+
+
+def save_all(time_train, model, data, params, save_folder_model, save_folder_log, save_folder_graphs):
+    statistics = {}
+    statistics['Time_train'] = time_train.total_seconds()
 
     score_train = model.evaluate(data['x_train'], data['y_train'], verbose=0)
     statistics['Train_loss'] = score_train[0]
@@ -67,7 +145,7 @@ def fit_and_save_base_NASNetMobile(data, params, save_folder_model, save_folder_
 
     #ph.save_loss_graph(log, model_name, save_folder_graphs)
     #ph.save_accuracy_graph(log, model_name, save_folder_graphs)
-    ph.save_model_graph(model, model_name, save_folder_graphs)
+    #ph.save_model_graph(model, model_name, save_folder_graphs)
     return model_name
 
 
