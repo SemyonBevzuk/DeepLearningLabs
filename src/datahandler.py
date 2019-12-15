@@ -16,10 +16,10 @@ def read_raw_data(path):
     data['x_validation'] = data['x_validation'].transpose(0, 2, 3, 1)
     data['x_test'] = data['x_test'].transpose(0, 2, 3, 1)
 
-    data['x_train'] = data['x_train'][:100]
-    data['y_train'] = data['y_train'][:100]
-    data['x_test'] = data['x_test'][:100]
-    data['y_test'] = data['y_test'][:100]
+    #data['x_train'] = data['x_train'][:100]
+    #data['y_train'] = data['y_train'][:100]
+    #data['x_test'] = data['x_test'][:100]
+    #data['y_test'] = data['y_test'][:100]
     return data
 
 
@@ -37,8 +37,8 @@ def resave_data(path, img_size):
     data_file = os.path.basename(path)
     data_filename, data_file_extension = os.path.splitext(data_file)
 
-    new_filename = data_filename + '_' + str(img_size)
-    new_path = os.path.join(os.path.split(path)[0], new_filename + data_file_extension)
+    new_filename = data_filename + '_' + str(img_size) + data_file_extension
+    new_path = os.path.join(os.path.split(path)[0], new_filename)
 
     with open(new_path, 'wb') as f:
         pickle.dump(data, f)
