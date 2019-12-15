@@ -95,7 +95,7 @@ def fit_and_save_NASNetMobile_with_fully_connected_layers(data, params, save_fol
     model, log = fit_model_NASNetMobile_with_fully_connected_layers(data, params)
     delta_time = datetime.now() - time_start
 
-    save_all(delta_time, model, data, params, save_folder_model, save_folder_log, save_folder_graphs)
+    save_all(delta_time, model, log, data, params, save_folder_model, save_folder_log, save_folder_graphs)
 
 
 def fit_and_save_base_NASNetMobile(data, params, save_folder_model, save_folder_log, save_folder_graphs):
@@ -103,7 +103,7 @@ def fit_and_save_base_NASNetMobile(data, params, save_folder_model, save_folder_
     model, log = fit_model_base_NASNetMobile(data, params)
     delta_time = datetime.now() - time_start
 
-    save_all(delta_time, model, data, params, save_folder_model, save_folder_log, save_folder_graphs)
+    save_all(delta_time, model, log, data, params, save_folder_model, save_folder_log, save_folder_graphs)
 
 
 def fit_and_save_NASNetMobile(data, params, save_folder_model, save_folder_log, save_folder_img):
@@ -111,7 +111,7 @@ def fit_and_save_NASNetMobile(data, params, save_folder_model, save_folder_log, 
     model, log = fit_model_NASNetMobile(data, params)
     delta_time = datetime.now() - time_start
 
-    save_all(delta_time, model, data, params, save_folder_model, save_folder_log, save_folder_img)
+    save_all(delta_time, model, log, data, params, save_folder_model, save_folder_log, save_folder_img)
 
 
 def fit_and_save_NASNetMobile_with_classifier(data, params, save_folder_model, save_folder_log, save_folder_img):
@@ -119,10 +119,10 @@ def fit_and_save_NASNetMobile_with_classifier(data, params, save_folder_model, s
     model, log = fit_model_NASNetMobile_with_classifier(data, params)
     delta_time = datetime.now() - time_start
 
-    save_all(delta_time, model, data, params, save_folder_model, save_folder_log, save_folder_img)
+    save_all(delta_time, model, log, data, params, save_folder_model, save_folder_log, save_folder_img)
 
 
-def save_all(time_train, model, data, params, save_folder_model, save_folder_log, save_folder_graphs):
+def save_all(time_train, model, log, data, params, save_folder_model, save_folder_log, save_folder_graphs):
     statistics = {}
     statistics['Time_train'] = time_train.total_seconds()
 
@@ -143,8 +143,24 @@ def save_all(time_train, model, data, params, save_folder_model, save_folder_log
     with open(os.path.join(save_folder_log, filename), 'w', encoding='utf-8') as file:
         json.dump(model_info, file)
 
-    #ph.save_loss_graph(log, model_name, save_folder_graphs)
-    #ph.save_accuracy_graph(log, model_name, save_folder_graphs)
+    try:
+        ph.save_loss_graph(log, model_name, save_folder_graphs)
+    except BaseException:
+        print("Error in save_loss_graph")
+        try:
+            print(log)
+            print(log.history['loss'])
+        except BaseException:
+            print("Bad history loss-_-")
+    try:
+        ph.save_accuracy_graph(log, model_name, save_folder_graphs)
+    except BaseException:
+        print("Error in save_accuracy_graph")
+        try:
+            print(log)
+            print(log.history['accuracy'])
+        except BaseException:
+            print("Bad history accuracy-_-")
     #ph.save_model_graph(model, model_name, save_folder_graphs)
     return model_name
 

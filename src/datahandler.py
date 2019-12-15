@@ -28,10 +28,16 @@ def resave_data(path, img_size):
         data = pickle.load(f, encoding='latin1')
     data['x_train'] = data['x_train'].transpose(0, 2, 3, 1)
     data['x_test'] = data['x_test'].transpose(0, 2, 3, 1)
+    print("Load data")
+
+    data['x_train'] = data['x_train'][:8000]
+    data['x_test'] = data['x_test'][:100]
 
     data['x_train'] = resize(data['x_train'], (data['x_train'].shape[0], img_size, img_size, 3), anti_aliasing=True)
+    print("Resize x_train")
     data['x_train'] = data['x_train'].transpose(0, 3, 1, 2)
     data['x_test'] = resize(data['x_test'], (data['x_test'].shape[0], img_size, img_size, 3), anti_aliasing=True)
+    print("Resize x_test")
     data['x_test'] = data['x_test'].transpose(0, 3, 1, 2)
 
     data_file = os.path.basename(path)
@@ -39,10 +45,10 @@ def resave_data(path, img_size):
 
     new_filename = data_filename + '_' + str(img_size) + data_file_extension
     new_path = os.path.join(os.path.split(path)[0], new_filename)
-
+    print("Save...")
     with open(new_path, 'wb') as f:
         pickle.dump(data, f)
-
+    print("Done!")
     return new_filename
 
 
