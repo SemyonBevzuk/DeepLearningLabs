@@ -97,7 +97,11 @@ def main():
     #data['x_test'] = data['x_test'][:100]
     #data['y_test'] = data['y_test'][:100]
 
-    dh.resave_data(path, 256)
+    new_filename = dh.resave_data(path, 256)
+    new_path = os.path.join('..', '..', 'data', new_filename)
+    data = dh.get_matrix_data(new_path)
+    dh.print_data_information(data)
+
     #data = dh.get_matrix_zoom_data_with_large_label(path, zoom=4, label_size=1000)
 
     #print('\tBase NASNetMobile\n')

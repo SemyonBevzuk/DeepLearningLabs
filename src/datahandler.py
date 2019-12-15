@@ -35,14 +35,15 @@ def resave_data(path, img_size):
     data['x_test'] = data['x_test'].transpose(0, 3, 1, 2)
 
     data_file = os.path.basename(path)
-    data_file_name, data_file_extension = os.path.splitext(data_file)
+    data_filename, data_file_extension = os.path.splitext(data_file)
 
-    new_file_name = data_file_name + '_' + str(img_size)
-    new_path = os.path.join(os.path.split(path)[0], new_file_name + data_file_extension)
+    new_filename = data_filename + '_' + str(img_size)
+    new_path = os.path.join(os.path.split(path)[0], new_filename + data_file_extension)
 
     with open(new_path, 'wb') as f:
         pickle.dump(data, f)
 
+    return new_filename
 
 
 
