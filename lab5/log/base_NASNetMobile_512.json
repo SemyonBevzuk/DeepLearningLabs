@@ -1,1 +1,0 @@
-{"Parameters": {"batch_size": 128, "num_epochs": 10, "label": "base_NASNetMobile_512"}, "Statistics": {"Time_train": 49.367858, "Train_loss": 4.968025760650635, "Train_accuracy": 0.05000000074505806, "Test_loss": 4.984065437316895, "Test_accuracy": 0.0}}
