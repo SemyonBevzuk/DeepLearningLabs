@@ -32,9 +32,10 @@ def fit_model_base_NASNetMobile(data, params):
 
     model.name = params['label']
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    # print(model.summary())
-    log = model.fit(data['x_train'], data['y_train'], batch_size=params['batch_size'], epochs=params['num_epochs'],
-                    validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=1)
+    print(model.summary())
+    log = {}
+    #log = model.fit(data['x_train'], data['y_train'], batch_size=params['batch_size'], epochs=params['num_epochs'],
+    #                validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=1)
     return (model, log)
 
 
@@ -54,7 +55,7 @@ def fit_model_NASNetMobile_with_fully_connected_layers(data, params):
 
     model.name = params['label']
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    # print(model.summary())
+    print(model.summary())
     log = model.fit(data['x_train'], data['y_train'], batch_size=params['batch_size'], epochs=params['num_epochs'],
                     validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=1)
     return (model, log)
@@ -67,7 +68,7 @@ def fit_model_NASNetMobile(data, params):
 
     model.name = params['label']
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    # print(model.summary())
+    print(model.summary())
     log = model.fit(data['x_train'], data['y_train'], batch_size=params['batch_size'], epochs=params['num_epochs'],
                     validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=1)
     return (model, log)
@@ -87,7 +88,7 @@ def fit_model_NASNetMobile_with_classifier(data, params):
 
     model.name = params['label']
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    # print(model.summary())
+    print(model.summary())
     log = model.fit(data['x_train'], data['y_train'], batch_size=params['batch_size'], epochs=params['num_epochs'],
                     validation_data=(data['x_test'], data['y_test']), shuffle=True, verbose=1)
     return (model, log)
@@ -97,7 +98,6 @@ def fit_model_base_NASNetMobile_zoom_data(data, params):
     model = Sequential()
     model.add(Lambda(lambda image: tf.image.resize(image, (params['img_size'], params['img_size']),
                                                         method=tf.image.ResizeMethod.BICUBIC,
-                                                        antialias=False,
                                                         preserve_aspect_ratio=False),
                           output_shape=(params['img_size'], params['img_size'], 3),
                           input_shape=(data['x_train'].shape[1], data['x_train'].shape[2], data['x_train'].shape[3])))
@@ -120,7 +120,6 @@ def fit_model_NASNetMobile_with_fully_connected_layers_zoom_data(data, params):
     model = Sequential()
     model.add(Lambda(lambda image: tf.image.resize(image, (params['img_size'], params['img_size']),
                                                    method=tf.image.ResizeMethod.BICUBIC,
-                                                   antialias=False,
                                                    preserve_aspect_ratio=False),
                      output_shape=(params['img_size'], params['img_size'], 3),
                      input_shape=(data['x_train'].shape[1], data['x_train'].shape[2], data['x_train'].shape[3])))
@@ -129,11 +128,11 @@ def fit_model_NASNetMobile_with_fully_connected_layers_zoom_data(data, params):
     for layer in baseModel.layers:
         layer.trainable = False
     model.add(baseModel)
+    model.add(MaxPool2D(pool_size=2))
+    model.add(MaxPool2D(pool_size=2))
     model.add(Flatten())
-    model.add(Dense(512, activation="relu"))
+    model.add(Dense(1024, activation="relu"))
     model.add(Dense(256, activation="relu"))
-    model.add(Dense(512, activation="relu"))
-    model.add(Dense(128, activation="relu"))
     model.add(Dense(43, activation="softmax"))
 
     model.name = params['label']
@@ -148,7 +147,6 @@ def fit_model_NASNetMobile_zoom_data(data, params):
     model = Sequential()
     model.add(Lambda(lambda image: tf.image.resize(image, (params['img_size'], params['img_size']),
                                                    method=tf.image.ResizeMethod.BICUBIC,
-                                                   antialias=False,
                                                    preserve_aspect_ratio=False),
                      output_shape=(params['img_size'], params['img_size'], 3),
                      input_shape=(data['x_train'].shape[1], data['x_train'].shape[2], data['x_train'].shape[3])))
@@ -168,18 +166,17 @@ def fit_model_NASNetMobile_with_classifier_zoom_data(data, params):
     model = Sequential()
     model.add(Lambda(lambda image: tf.image.resize(image, (params['img_size'], params['img_size']),
                                                    method=tf.image.ResizeMethod.BICUBIC,
-                                                   antialias=False,
                                                    preserve_aspect_ratio=False),
                      output_shape=(params['img_size'], params['img_size'], 3),
                      input_shape=(data['x_train'].shape[1], data['x_train'].shape[2], data['x_train'].shape[3])))
     baseModel = NASNetMobile(weights=None, include_top=False,
                              input_tensor=Input(shape=(params['img_size'], params['img_size'], 3)))
     model.add(baseModel)
+    model.add(MaxPool2D(pool_size=2))
+    model.add(MaxPool2D(pool_size=2))
     model.add(Flatten())
-    model.add(Dense(512, activation="relu"))
+    model.add(Dense(1024, activation="relu"))
     model.add(Dense(256, activation="relu"))
-    model.add(Dense(512, activation="relu"))
-    model.add(Dense(128, activation="relu"))
     model.add(Dense(43, activation="softmax"))
 
     model.name = params['label']
@@ -293,7 +290,7 @@ def save_all(time_train, model, log, data, params, save_folder_model, save_folde
             print(log.history['accuracy'])
         except BaseException:
             print("Bad history accuracy-_-")
-    # ph.save_model_graph(model, model_name, save_folder_graphs)
+    ph.save_model_graph(model, model_name, save_folder_graphs)
     return model_name
 
 
