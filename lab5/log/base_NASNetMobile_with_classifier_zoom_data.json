@@ -1,0 +1,1 @@
+{"Parameters": {"batch_size": 128, "num_epochs": 10, "label": "base_NASNetMobile_with_classifier_zoom_data", "img_size": 256}, "Statistics": {"Time_train": 1807.578006, "Train_loss": 15.743255805291716, "Train_accuracy": 0.023255813953488372, "Test_loss": 16.003239556899263, "Test_accuracy": 0.007125890736342043}}
