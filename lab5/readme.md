@@ -102,7 +102,7 @@ num_epochs = 10
 
 *NASNetMobile_zoom_data* - исходная модель, запускалась на данных с расширенным числом меток и увеличенным размером изображения.
 
-                 Model name                  | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
+|                 Model name                  | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
 | NASNetMobile                                |    0.3606     |   9.435   |     0.3812     |   9.0008   |   1682.9806    |
 | NASNetMobile_zoom_data                      |    0.2371     |  11.8239  |     0.266      |  11.4953   |   10204.6502   |
