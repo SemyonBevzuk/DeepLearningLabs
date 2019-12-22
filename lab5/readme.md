@@ -98,14 +98,14 @@ num_epochs = 10
 
 Обучается вся сеть, но с исходной структурой.
 
-*NASNetMobile* - исходная модель.
+*NASNetMobile* - исходная модель, запускалась на данных с расширенным числом меток.
 
-*NASNetMobile_zoom_data* - исходная модель, запускалась на данных с увеличенным размером изображения.
+*NASNetMobile_zoom_data* - исходная модель, запускалась на данных с расширенным числом меток и увеличенным размером изображения.
 
-|                 Model name                  | Test accuracy | Train accuracy | Time_train (s) |
-| :------------------------------------------ | :-----------: | :------------: | :------------: |
-| NASNetMobile                                |    0.3606     |     0.3812     |   1682.9806    |
-| NASNetMobile_zoom_data                      |    0.2371     |     0.266      |   10204.6502   |
+                 Model name                  | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
+| :------------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
+| NASNetMobile                                |    0.3606     |   9.435   |     0.3812     |   9.0008   |   1682.9806    |
+| NASNetMobile_zoom_data                      |    0.2371     |  11.8239  |     0.266      |  11.4953   |   10204.6502   |
 
 |                            Loss                             |
 | :---------------------------------------------------------- |
@@ -121,11 +121,11 @@ num_epochs = 10
 
 Обучается только классификатор, веса остальной сети не меняются.
 
-*base_NASNetMobile_with_classifier* - исходная модель + классификатор, запускалась на данных с расширенным числом меток.
+*base_NASNetMobile_with_classifier* - исходная модель + классификатор.
 
 ![](https://latex.codecogs.com/svg.latex?512\overset{ReLU}{\rightarrow}256\overset{ReLU}{\rightarrow}128\overset{Softmax}{\rightarrow}43)
 
-*base_NASNetMobile_with_classifier_zoom_data* - исходная модель + классификатор, запускалась на данных с расширенным числом меток и увеличенным размером изображения.
+*base_NASNetMobile_with_classifier_zoom_data* - исходная модель + классификатор, запускалась на данных с увеличенным размером изображения.
 
 ![](https://latex.codecogs.com/svg.latex?\overset{MaxPool2D}{\rightarrow}1024\overset{ReLU}{\rightarrow}256\overset{Softmax}{\rightarrow}43)
 
