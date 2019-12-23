@@ -171,14 +171,14 @@ num_epochs = 10
 |                 Model name                  | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
 | CNN_10_relu                                 |    0.9481     |  0.3136   |     0.999      |   0.0033   |   2071.7088    |
-| NASNetMobile                                |    0.3606     |   9.435   |     0.3812     |   9.0008   |   1682.9806    |
 | base_NASNetMobile                           |    0.0001     |  8.9801   |     0.0002     |   9.5025   |    28.2086     |
-| NASNetMobile_zoom_data                      |    0.2371     |  11.8239  |     0.266      |  11.4953   |   10204.6502   |
 | base_NASNetMobile_zoom_data                 |      0.0      |  8.1943   |     0.0001     |   8.2727   |    77.7223     |
-| NASNetMobile_with_classifier                |    0.4541     |  4.0931   |     0.5236     |   3.4453   |   1709.9733    |
-| base_NASNetMobile_with_classifier           |    0.0371     |  4.5505   |     0.0461     |   4.8162   |    234.5792    |
-| NASNetMobile_with_classifier_zoom_data      |    0.0574     |  14.7554  |     0.0706     |  14.5958   |   10318.4132   |
+| NASNetMobile                                |    0.2848     |   10.435  |     0.9809     |   0.0613   |   1682.9806    |
+| NASNetMobile_zoom_data                      |    0.3943     |  9.3234   |     0.9963      |  0.0125   |   10204.6502   |
+| base_NASNetMobile_with_classifier           |    0.0371     |  4.5505   |     0.5516     |   1.5534   |    234.5792    |
 | base_NASNetMobile_with_classifier_zoom_data |    0.0071     |  16.0032  |     0.0233     |  15.7433   |    1807.578    |
+| NASNetMobile_with_classifier                |    0.0279     |  15.2123  |     0.9760     |   0.0872   |   1709.9733    |
+| NASNetMobile_with_classifier_zoom_data      |    0.0574     |  14.7554  |     0.9806     |   0.0958   |   10318.4132   |
 
 [comment]: # (result_table_end)
 
