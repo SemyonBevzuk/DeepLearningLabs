@@ -157,7 +157,7 @@ num_epochs = 10
 |                 Model name                  | Test accuracy | Test loss | Train accuracy | Train loss | Time_train (s) |
 | :------------------------------------------ | :-----------: | :-------: | :------------: | :--------: | :------------: |
 | NASNetMobile_with_classifier                |    0.0279     |  15.2123  |     0.9760     |   0.0872   |   1709.9733    |
-| NASNetMobile_with_classifier_zoom_data      |    0.0574     |  14.7554  |     0.0706     |  14.5958   |   10318.4132   |
+| NASNetMobile_with_classifier_zoom_data      |    0.0574     |  14.7554  |     0.9806     |   0.0958   |   10318.4132   |
 
 |                            Loss                                                  |
 | :------------------------------------------------------------------------------- |
